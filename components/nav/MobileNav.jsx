@@ -61,9 +61,12 @@ export default function MobileNav() {
             <div>
               <ul className="flex flex-col gap-3 text-xl">
                 {NavItems.map((link) => (
-                  <label htmlFor="sidebar-active" key={link.href}>
+                  <li
+                    key={link.href}
+                    className="list-none transition hover:text-accent"
+                  >
                     <Link href={link.href}>{link.title}</Link>
-                  </label>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} bg-primary bg-noise font-sans text-white bg-blend-overlay`}
+        className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} min-w-80 bg-primary bg-noise font-sans text-white bg-blend-overlay`}
       >
         <Header />
         {children}
