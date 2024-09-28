@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section id="home" className="scroll-mt-[10rem]">
+    <section
+      id="home"
+      className="mb-28 scroll-mt-[10rem] px-6 sm:px-10 md:px-14"
+    >
       <div className="mb-12 flex flex-col-reverse items-center gap-y-4 pt-8 md:flex-row md:items-center md:justify-center md:pt-28 lg:gap-x-8">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-start xl:gap-8">
           <div className="flex flex-col gap-4 xl:gap-8">

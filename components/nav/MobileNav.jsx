@@ -10,7 +10,7 @@ export default function MobileNav() {
   return (
     <nav>
       <button
-        className="sticky z-30 cursor-pointer text-white"
+        className="sticky z-50 cursor-pointer text-white"
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg

@@ -10,7 +10,7 @@ import "@/app/globals.css";
 export default function Header() {
   return (
     <header className="flex h-[4rem]">
-      <div className="container mx-auto flex items-center justify-between px-8 opacity-[.87]">
+      <div className="container z-40 mx-auto flex items-center justify-between px-8">
         <div className="w-24 lg:w-28">
           <Link href="/">
             <Image
