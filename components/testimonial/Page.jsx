@@ -4,13 +4,13 @@ import Image from "next/image";
 export default function Testimonial() {
   return (
     <section className="mb-28 bg-button/10 px-6 sm:px-10 md:px-14">
-      <div className="grid grid-cols-2 place-items-center gap-y-4 p-7 md:grid-cols-3 md:grid-rows-1">
+      <div className="grid grid-cols-2 place-items-center gap-y-4 p-7 max-[420px]:grid-cols-1 md:grid-cols-3 md:grid-rows-1 lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-x-16">
         <h1 className="col-span-full text-center font-morangaRegular text-xl md:order-2 md:col-span-1">
           Trusted by Over <br /> 5,000 Businesses <br /> Since 2019
         </h1>
         <div className="md:order-1">
           <Image
-            className="min-w-48 drop-shadow-sm sm:w-[14rem] md:w-[15rem] lg:drop-shadow-lg xl:w-[22rem]"
+            className="lg:drop-shadow-lgv min-w-44 drop-shadow-sm max-[420px]:min-w-32 sm:w-[14rem] md:w-[15rem]"
             src="/assets/Contact-Cactus.webp"
             alt="home-cactus"
             width={100}
@@ -19,7 +19,7 @@ export default function Testimonial() {
             unoptimized={true}
           />
         </div>
-        <div className="flex flex-col gap-x-6 gap-y-6 md:order-3">
+        <div className="flex flex-col gap-x-6 gap-y-6 md:order-3 lg:flex-row">
           <div>
             <div className="flex gap-x-2">
               <h1 className="text-xl font-bold">4.8</h1>
