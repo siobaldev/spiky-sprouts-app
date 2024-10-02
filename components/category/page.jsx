@@ -6,7 +6,7 @@ export default function Category() {
   return (
     <section className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14">
       <div className="mb-8 space-y-2 text-center">
-        <h1 className="font-morangaBlack text-xl uppercase md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
+        <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
           Explore by <span className="text-accent">category</span>
         </h1>
         <p className="mx-auto max-w-[30rem] text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">

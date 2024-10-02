@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="mb-12 flex flex-col-reverse items-center gap-y-4 pt-8 md:flex-row md:items-center md:justify-center md:pt-28 lg:gap-x-8">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-start xl:gap-6">
           <div className="flex flex-col gap-4 xl:gap-6">
-            <h1 className="max-w-[40rem] font-morangaBlack text-xl uppercase md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
+            <h1 className="max-w-[40rem] font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
               Sculpting Spaces — <br />
               The Art of Ornamental <span className="text-accent">Plants</span>
             </h1>

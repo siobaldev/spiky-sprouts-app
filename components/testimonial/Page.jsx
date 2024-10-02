@@ -5,7 +5,7 @@ export default function Testimonial() {
   return (
     <section className="mb-28 bg-button/10 px-6 sm:px-10 md:px-14">
       <div className="grid grid-cols-2 place-items-center gap-y-4 p-7 max-[420px]:grid-cols-1 md:grid-cols-3 md:grid-rows-1 lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-x-16">
-        <h1 className="col-span-full text-center font-morangaRegular text-xl md:order-2 md:col-span-1">
+        <h1 className="col-span-full text-center font-morangaRegular text-xl opacity-87 md:order-2 md:col-span-1">
           Trusted by Over <br /> 5,000 Businesses <br /> Since 2019
         </h1>
         <div className="md:order-1">
