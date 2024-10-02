@@ -23,7 +23,7 @@ export default function Care() {
             width={150}
             height={150}
           />
-          <div className="w-[24rem] md:w-[28rem] lg:w-[34rem] lg:space-y-2">
+          <div className="max-w-[24rem] md:w-[28rem] lg:w-[34rem] lg:space-y-2">
             {plantCare.map((care) => (
               <div key={care.number} className="flex flex-row items-center">
                 <h1 className="w-7 bg-gradient-to-r from-[#83C949] bg-clip-text font-morangaBlack text-[3rem] text-transparent md:text-[3.3rem]">
