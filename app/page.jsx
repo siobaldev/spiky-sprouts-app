@@ -5,6 +5,7 @@ import NewArrival from "@/components/newArrival/Page";
 import BestSeller from "@/components/bestSeller/Page";
 import Category from "@/components/category/page";
 import Care from "@/components/care/page";
+import NewsLetter from "@/components/newsLetter/page";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <BestSeller />
       <Category />
       <Care />
+      <NewsLetter />
     </main>
   );
 }
