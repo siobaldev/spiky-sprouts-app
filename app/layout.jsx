@@ -2,7 +2,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header/Page";
 import Footer from "@/components/footer/page";
-import { FacebookIcon } from "@/lib/data";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

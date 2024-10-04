@@ -5,6 +5,7 @@ import NewArrival from "@/components/newArrival/Page";
 import BestSeller from "@/components/bestSeller/Page";
 import Category from "@/components/category/page";
 import Care from "@/components/care/page";
+import Faq from "@/components/faq/page";
 import NewsLetter from "@/components/newsLetter/page";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <BestSeller />
       <Category />
       <Care />
+      <Faq />
       <NewsLetter />
     </main>
   );
