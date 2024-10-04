@@ -7,14 +7,18 @@ import Link from "next/link";
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav>
       <button
-        className="sticky z-50 cursor-pointer text-white"
+        className="sticky z-40 cursor-pointer text-white"
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg
-          className="h-6 w-6"
+          className="h-8 w-8 opacity-60"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -23,14 +27,14 @@ export default function MobileNav() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth="2"
-            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            strokeWidth="3"
+            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h12M4 12h16M8 18h12"}
           />
         </svg>
       </button>
       {isOpen && (
-        <div className="fixed right-0 top-0 mb-10 flex h-dvh w-80 flex-col bg-primary p-6">
-          <div className="flex flex-col gap-y-12 px-6 py-24">
+        <div className="fixed left-0 top-0 mb-10 flex h-dvh w-4/5 flex-col bg-primary p-6 sm:w-96 md:w-[28rem] md:p-16">
+          <div className="flex flex-col gap-y-12 px-6 py-24 md:px-0">
             <form>
               <div className="relative">
                 <svg
@@ -54,7 +58,7 @@ export default function MobileNav() {
                   id="search"
                   name="search"
                   placeholder="Search"
-                  className="h-12 w-56 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-12 py-2 font-bold text-white/60 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button"
+                  className="h-12 w-11/12 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 pl-12 font-bold text-white/60 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button"
                 />
               </div>
             </form>
@@ -85,9 +89,12 @@ export default function MobileNav() {
           </div>
         </div>
       )}
+      {isOpen && (
+        <div
+          className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm transition-opacity duration-[0.75s] ease-in-out md:hidden"
+          onClick={toggleMenu}
+        />
+      )}
     </nav>
   );
-}
-{
-  /*  */
 }
