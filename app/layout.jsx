@@ -31,7 +31,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} min-w-80 bg-primary bg-noise font-sans text-white/87 bg-blend-overlay`}
       >

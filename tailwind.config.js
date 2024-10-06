@@ -33,6 +33,8 @@ module.exports = {
       },
       boxShadow: {
         itemCard: "0 0 25px rgba(0, 0, 0, 0.25)",
+        headerBottom: "0px 0px 10px 10px rgb(17, 21, 9)",
+        navShadow: "20px 0px 30px -15px hsl(80, 40%, 6%)",
       },
     },
   },

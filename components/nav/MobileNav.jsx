@@ -1,11 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavItems, FacebookIcon, TwitterIcon, InstagramIcon } from "@/lib/data";
 import Link from "next/link";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,7 +30,7 @@ export default function MobileNav() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg
-          className="h-8 w-8 opacity-60"
+          className="size-6 opacity-60 sm:size-7"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -33,7 +45,7 @@ export default function MobileNav() {
         </svg>
       </button>
       {isOpen && (
-        <div className="fixed left-0 top-0 mb-10 flex h-dvh w-4/5 flex-col bg-primary p-6 sm:w-96 md:w-[28rem] md:p-16">
+        <div className="shadow-navShadow fixed left-0 top-0 mb-10 flex h-dvh w-4/5 flex-col bg-primary p-6 sm:w-96 md:w-[28rem] md:p-16">
           <div className="flex flex-col gap-y-12 px-6 py-24 md:px-0">
             <form>
               <div className="relative">
@@ -69,7 +81,9 @@ export default function MobileNav() {
                     key={link.href}
                     className="list-none transition hover:text-accent"
                   >
-                    <Link href={link.href}>{link.title}</Link>
+                    <Link onClick={toggleMenu} href={link.href}>
+                      {link.title}
+                    </Link>
                   </li>
                 ))}
               </ul>

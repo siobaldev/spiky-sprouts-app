@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import MobileNav from "@/components/nav/MobileNav";
 import { NavItems } from "@/lib/data";
+import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import "@/app/globals.css";
 
 export default function Header() {
@@ -24,21 +26,21 @@ export default function Header() {
   }, []);
   return (
     <header
-      className={`fixed top-0 z-[999] flex h-[4rem] w-full items-center justify-center transition-all duration-300 md:h-[5rem] lg:h-[6rem] ${
+      className={`fixed top-0 z-50 flex h-[4rem] w-full items-center justify-center transition-all duration-300 md:h-[5rem] lg:h-[6rem] ${
         !isSticking
           ? "bg-transparent"
-          : "bg-primary shadow-inner backdrop-blur-[1rem]"
+          : "shadow-headerBottom bg-primary backdrop-blur-[1rem]"
       }`}
     >
-      <div className="container mx-auto flex w-full max-w-[1280px] items-center justify-between px-8 md:px-16">
+      <div className="container z-0 mx-auto flex w-full max-w-[1280px] items-center justify-between px-8 md:px-16">
         <div className="lg:hidden">
           <MobileNav />
         </div>
 
-        <div>
+        <div className="-z-20">
           <Link href="/">
             <Image
-              className="md:w-20 lg:w-28"
+              className="-z-20 md:w-20 lg:w-28"
               src="./assets/logo.svg"
               alt="Spiky-Sprouts-Logo"
               width={70}
@@ -48,21 +50,23 @@ export default function Header() {
         </div>
 
         <div className="hidden lg:flex">
-          <ul className="flex flex-wrap gap-8">
+          <ul className="flex flex-wrap gap-4">
             {NavItems.map((link) => (
-              <li
-                key={link.href}
-                className="list-none transition hover:text-accent"
-              >
-                <Link href={link.href}>{link.title}</Link>
+              <li key={link.href} className="relative px-4 py-2">
+                <Link
+                  className="list-none underline-offset-8 transition hover:text-accent md:text-base"
+                  href={link.href}
+                >
+                  {link.title}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
+        <div className="-z-20">
           <Image
-            className="w-7 opacity-60"
+            className="size-6 opacity-60 sm:size-7 lg:size-8"
             src="./assets/Cart.svg"
             alt="cart"
             width={30}

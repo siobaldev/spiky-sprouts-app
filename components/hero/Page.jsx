@@ -21,7 +21,7 @@ export default function Hero() {
             </p>
           </div>
           <div>
-            <Link href="#shop">
+            <Link href="#bestSeller">
               <button className="h-11 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] xl:text-base">
                 Shop now
               </button>
