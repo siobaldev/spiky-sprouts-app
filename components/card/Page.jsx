@@ -1,17 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
+import Favorite from "../favorite/page";
 
 const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
   return (
     <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
-      <Image
-        className="absolute right-3 top-3 size-5 cursor-pointer md:size-6"
-        src={"/assets/heart.svg"}
-        alt="Wishlist"
-        width={20}
-        height={20}
-      />
+      <Favorite />
       <Image
         className="size-24 md:size-32"
         src={getImageUrl(imageName)}
