@@ -18,7 +18,7 @@ export default function Faq() {
         {FAQs.map((faqs) => (
           <div
             key={faqs.id}
-            className="rounded-2xl border-white bg-white/[0.02] p-4 md:p-5 lg:p-6"
+            className={`rounded-2xl border-white bg-white/[0.02] p-4 md:p-5 lg:p-6 ${openAccordionId === faqs.id ? "bg-white/[0.05] duration-300" : "transition-colors"}`}
           >
             <button
               onClick={() => toggleAccordion(faqs.id)}
