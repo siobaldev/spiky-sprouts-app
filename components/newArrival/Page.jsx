@@ -1,6 +1,7 @@
 import React from "react";
 import { plants } from "@/lib/data";
 import Card from "@/components/card/Page";
+import Link from "next/link";
 
 export default function NewArrival() {
   const newPlants = plants.filter((plant) => plant.tag.includes("New"));
@@ -23,6 +24,7 @@ export default function NewArrival() {
         <div className="flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
           {newPlants.map((plant) => (
             <Card
+              slug={plant.slug}
               key={plant.id}
               name={plant.name}
               imageName={plant}
