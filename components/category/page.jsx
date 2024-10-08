@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowUpIcon } from "@/lib/data";
+import { ArrowIcon } from "@/lib/data";
 import ClientWrapper from "@/context/ClientWrapper";
 
 export default function Category() {
@@ -39,13 +39,11 @@ export default function Category() {
               unoptimized={true}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
             <h1 className="font-morangaBlack uppercase opacity-87">
               Explore All
             </h1>
-            <div className="rotate-90">
-              <ArrowUpIcon />
-            </div>
+            <ArrowIcon className="duration-500 group-hover:-rotate-45 lg:size-6 xl:size-7" />
           </div>
         </ClientWrapper>
         <div className="space-y-8">
@@ -60,11 +58,9 @@ export default function Category() {
                 unoptimized={true}
               />
             </div>
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <h1 className="font-morangaBlack uppercase opacity-87">Cactus</h1>
-              <div className="rotate-90">
-                <ArrowUpIcon />
-              </div>
+              <ArrowIcon className="duration-500 group-hover:-rotate-45 lg:size-6 xl:size-7" />
             </div>
           </ClientWrapper>
           <ClientWrapper>
@@ -78,13 +74,11 @@ export default function Category() {
                 unoptimized={true}
               />
             </div>
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <h1 className="font-morangaBlack uppercase opacity-87">
                 Succulent
               </h1>
-              <div className="rotate-90">
-                <ArrowUpIcon />
-              </div>
+              <ArrowIcon className="duration-500 group-hover:-rotate-45 lg:size-6 xl:size-7" />
             </div>
           </ClientWrapper>
         </div>
