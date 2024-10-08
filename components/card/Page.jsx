@@ -5,18 +5,14 @@ import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
 import Favorite from "../favorite/page";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import ClientWrapper from "@/context/ClientWrapper";
 
 const Page = ({ slug, name, imageName, rate, reviews, salePrice, price }) => {
   return (
     <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
       <Favorite />
       <Link href={`/products/${slug}`}>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
+        <ClientWrapper>
           <Image
             className="size-24 md:size-32"
             src={getImageUrl(imageName)}
@@ -25,7 +21,7 @@ const Page = ({ slug, name, imageName, rate, reviews, salePrice, price }) => {
             height={90}
             unoptimized={true}
           />
-        </motion.div>
+        </ClientWrapper>
       </Link>
 
       <div className="flex w-full flex-col gap-y-1 px-4">

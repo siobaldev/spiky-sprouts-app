@@ -20,6 +20,7 @@ module.exports = {
         accent: "hsl(93, 54%, 54%)", // Accent color
         button: "hsl(25, 98%, 32%)", // Button color
         hover: "hsl(15, 98%, 32%)", // Hover color for buttons
+        selection: "hsl(71, 35%, 26%)", // Selection Color
       },
       opacity: {
         87: "0.87",
