@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowIcon } from "@/lib/data";
 
 export default function Hero() {
   return (
@@ -22,8 +23,9 @@ export default function Hero() {
           </div>
           <div>
             <Link href="#bestSeller">
-              <button className="h-11 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] xl:text-base">
-                Shop now
+              <button className="group flex h-11 items-center gap-x-4 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] hover:border-hover hover:bg-hover xl:text-base">
+                <span>Shop now</span>
+                <ArrowIcon className="duration-500 group-hover:-rotate-45 lg:size-6 xl:size-7" />
               </button>
             </Link>
           </div>

@@ -37,14 +37,23 @@ export default function Footer() {
               spaces.
             </p>
             <div className="flex items-center gap-x-4">
-              <div className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
+              <div className="group relative flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
                 <FacebookIcon />
+                <span className="absolute -top-14 left-1/2 z-20 -translate-x-1/2 scale-0 transform rounded-lg bg-button px-4 py-2 text-sm font-bold text-white shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-100">
+                  Facebook
+                </span>
               </div>
-              <div className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
+              <div className="group relative flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
                 <TwitterIcon />
+                <span className="absolute -top-14 left-1/2 z-20 -translate-x-1/2 scale-0 transform rounded-lg bg-button px-4 py-2 text-sm font-bold text-white shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-100">
+                  Twitter
+                </span>
               </div>
-              <div className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
+              <div className="group relative flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
                 <InstagramIcon />
+                <span className="absolute -top-14 left-1/2 z-20 -translate-x-1/2 scale-0 transform rounded-lg bg-button px-4 py-2 text-sm font-bold text-white shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-100">
+                  Instagram
+                </span>
               </div>
             </div>
           </div>
