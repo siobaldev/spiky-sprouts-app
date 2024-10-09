@@ -112,13 +112,18 @@ export default function MobileNav() {
             </div>
           </motion.div>
         )}
+
+        {isOpen && (
+          <motion.div
+            className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            onClick={toggleMenu}
+          />
+        )}
       </AnimatePresence>
-      {isOpen && (
-        <div
-          className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm md:hidden"
-          onClick={toggleMenu}
-        />
-      )}
     </nav>
   );
 }
