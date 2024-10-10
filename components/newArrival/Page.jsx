@@ -9,7 +9,7 @@ export default function NewArrival() {
   return (
     <section
       id="newArrival"
-      className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14"
+      className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14 lg:mb-40"
     >
       <div className="flex flex-col items-center justify-center">
         <div className="mb-8 space-y-2 text-center">

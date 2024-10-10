@@ -6,7 +6,7 @@ export default function Care() {
   return (
     <section
       id="plantCare"
-      className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14"
+      className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14 lg:mb-40"
     >
       <div className="flex flex-col items-center justify-center gap-y-4">
         <div className="flex flex-col items-center gap-y-4">

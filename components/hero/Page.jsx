@@ -7,9 +7,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="mb-28 scroll-mt-[10rem] px-6 sm:px-10 md:px-14"
+      className="mb-28 scroll-mt-[10rem] px-6 sm:px-10 md:px-14 lg:mb-40"
     >
-      <div className="mb-12 flex flex-col-reverse items-center gap-y-4 pt-16 md:flex-row md:items-center md:justify-center md:pt-28 lg:gap-x-8">
+      <div className="mb-12 flex flex-col-reverse items-center gap-y-4 pt-16 md:flex-row md:items-center md:justify-center md:pt-28 lg:gap-x-8 lg:pt-40">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-start xl:gap-6">
           <div className="flex flex-col gap-4 xl:gap-6">
             <h1 className="max-w-[40rem] font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
