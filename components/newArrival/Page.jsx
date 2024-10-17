@@ -23,16 +23,17 @@ export default function NewArrival() {
         </div>
         <div className="flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
           {newPlants.map((plant) => (
-            <Card
-              slug={plant.slug}
-              key={plant.id}
-              name={plant.name}
-              imageName={plant}
-              rate={plant.rate}
-              reviews={plant.reviews}
-              salePrice={plant.salePrice}
-              price={plant.price}
-            />
+            <Link href={`/product/${plant.slug}`} key={plant.id}>
+              <Card
+                name={plant.name}
+                imageName={plant.image}
+                rate={plant.rate}
+                reviews={plant.reviews}
+                salePrice={plant.salePrice}
+                price={plant.price}
+                slug={plant.slug}
+              />
+            </Link>
           ))}
         </div>
       </div>

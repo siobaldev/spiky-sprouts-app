@@ -1,28 +1,24 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
 import Favorite from "../favorite/page";
-import Link from "next/link";
 import ClientWrapper from "@/context/ClientWrapper";
 
-const Page = ({ slug, name, imageName, rate, reviews, salePrice, price }) => {
+const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
   return (
     <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
       <Favorite />
-      <Link href={`/products/${slug}`}>
-        <ClientWrapper>
-          <Image
-            className="size-24 md:size-32"
-            src={getImageUrl(imageName)}
-            alt={name}
-            width={90}
-            height={90}
-            unoptimized={true}
-          />
-        </ClientWrapper>
-      </Link>
+
+      <ClientWrapper>
+        <Image
+          className="size-24 md:size-32"
+          src={getImageUrl(imageName)}
+          alt={name}
+          width={90}
+          height={90}
+          unoptimized={true}
+        />
+      </ClientWrapper>
 
       <div className="flex w-full flex-col gap-y-1 px-4">
         <h1 className="text-sm font-bold opacity-[0.87] md:text-base">
@@ -30,10 +26,10 @@ const Page = ({ slug, name, imageName, rate, reviews, salePrice, price }) => {
         </h1>
         <div className="flex items-center gap-x-1 text-xs font-bold md:text-sm">
           <Image
-            className=""
+            className="size-4"
             src={"/assets/star.svg"}
             alt="rating"
-            width={16}
+            width={14}
             height={14}
           />
           <p className="text-white/60">{rate}</p>

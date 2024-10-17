@@ -29,7 +29,7 @@ export default function Header() {
       className={`fixed top-0 z-50 flex h-[4rem] w-full items-center justify-center transition-all duration-300 md:h-[5rem] lg:h-[6rem] ${
         !isSticking
           ? "bg-transparent"
-          : "shadow-headerBottom bg-primary backdrop-blur-[1rem]"
+          : "bg-primary shadow-headerBottom backdrop-blur-[1rem]"
       }`}
     >
       <div className="container z-0 mx-auto flex w-full max-w-[1280px] items-center justify-between px-8 md:px-16">
@@ -41,10 +41,11 @@ export default function Header() {
           <Link href="/">
             <Image
               className="-z-20 md:w-20 lg:w-28"
-              src="./assets/logo.svg"
+              src="/assets/logo.svg"
               alt="Spiky-Sprouts-Logo"
               width={70}
               height={30}
+              priority
             />
           </Link>
         </div>
@@ -67,7 +68,7 @@ export default function Header() {
         <div className="-z-20">
           <Image
             className="size-6 opacity-60 sm:size-7 lg:size-8"
-            src="./assets/Cart.svg"
+            src="/assets/Cart.svg"
             alt="cart"
             width={30}
             height={30}

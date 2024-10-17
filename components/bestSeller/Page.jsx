@@ -25,7 +25,7 @@ export default function BestSeller() {
           <Card
             key={plant.id}
             name={plant.name}
-            imageName={plant}
+            imageName={plant.image}
             rate={plant.rate}
             reviews={plant.reviews}
             salePrice={plant.salePrice}
