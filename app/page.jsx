@@ -7,7 +7,6 @@ import Category from "@/components/category/page";
 import Care from "@/components/care/page";
 import Faq from "@/components/faq/page";
 import NewsLetter from "@/components/newsLetter/page";
-import Footer from "@/components/footer/page";
 
 export default function Home() {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
       <Care />
       <Faq />
       <NewsLetter />
-      <Footer />
     </main>
   );
 }

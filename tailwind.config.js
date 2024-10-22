@@ -21,6 +21,12 @@ module.exports = {
         button: "hsl(25, 98%, 32%)", // Button color
         hover: "hsl(15, 98%, 32%)", // Hover color for buttons
         selection: "hsl(71, 35%, 26%)", // Selection Color
+        potColor: {
+          bronze: "hsl(33, 50%, 45%)",
+          brown: "hsl(28, 19%, 43%)",
+          green: "hsl(93, 33%, 28%)",
+          space: "hsl(170, 12%, 20%)",
+        },
       },
       opacity: {
         87: "0.87",
