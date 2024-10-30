@@ -41,11 +41,7 @@ export default function PlantDetail({ params }) {
               <h2 className="font-morangaBlack text-2xl font-bold">
                 {plant.name}
               </h2>
-              <p className="text-sm opacity-60">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                finibus nulla diam, finibus feugiat magna efficitur at.
-                Phasellus a urna.
-              </p>
+              <p className="text-sm opacity-60">{plant.description}</p>
               <div className="flex flex-row items-center justify-between gap-x-2">
                 <span className="text-2xl font-bold">${plant.salePrice}</span>
                 <span className="line-through opacity-60">${plant.price}</span>
