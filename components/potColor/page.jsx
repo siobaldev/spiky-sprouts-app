@@ -23,7 +23,7 @@ export default function ColorSelector() {
         />
         <label
           htmlFor="bronze"
-          className="bg-potColor-bronze size-4 cursor-pointer rounded-full border-2 border-transparent hover:border-white peer-checked/bronze:border-white/87"
+          className="size-4 cursor-pointer rounded-full border-2 border-transparent bg-potColor-bronze hover:border-white peer-checked/bronze:border-white/87 sm:size-6 md:size-8"
         />
 
         <input
@@ -36,7 +36,7 @@ export default function ColorSelector() {
         />
         <label
           htmlFor="brown"
-          className="bg-potColor-brown size-4 cursor-pointer rounded-full border-2 border-transparent hover:border-white/87 peer-checked/brown:border-white/87"
+          className="size-4 cursor-pointer rounded-full border-2 border-transparent bg-potColor-brown hover:border-white/87 peer-checked/brown:border-white/87 sm:size-6 md:size-8"
         />
 
         <input
@@ -49,7 +49,7 @@ export default function ColorSelector() {
         />
         <label
           htmlFor="green"
-          className="bg-potColor-green size-4 cursor-pointer rounded-full border-2 border-transparent hover:border-white/87 peer-checked/green:border-white/87"
+          className="size-4 cursor-pointer rounded-full border-2 border-transparent bg-potColor-green hover:border-white/87 peer-checked/green:border-white/87 sm:size-6 md:size-8"
         />
 
         <input
@@ -62,13 +62,15 @@ export default function ColorSelector() {
         />
         <label
           htmlFor="space"
-          className="bg-potColor-space size-4 cursor-pointer rounded-full border-2 border-transparent hover:border-white/87 peer-checked/space:border-white/87"
+          className="size-4 cursor-pointer rounded-full border-2 border-transparent bg-potColor-space hover:border-white/87 peer-checked/space:border-white/87 sm:size-6 md:size-8"
         />
       </div>
 
       <div>
         {selectedColor && (
-          <span className="text-sm opacity-60">{selectedColor}</span>
+          <span className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
+            {selectedColor}
+          </span>
         )}
       </div>
     </div>

@@ -15,14 +15,21 @@ export default function Quantity() {
 
   return (
     <>
-      <h1>Quantity</h1>
       <div className="flex gap-x-2">
-        <div className="flex flex-1 items-center justify-between rounded-md bg-button/20 px-4 py-2">
-          <button className="text-xl" onClick={decrement}>
+        <div className="flex flex-1 items-center justify-between rounded-md bg-button/20">
+          <button
+            className="px-4 py-2 text-2xl md:ml-2 lg:text-3xl"
+            onClick={decrement}
+          >
             -
           </button>
-          <span className="font-medium">{quantity}</span>
-          <button className="text-xl" onClick={increment}>
+          <span className="font-bold sm:text-base md:text-base lg:text-lg xl:text-xl">
+            {quantity}
+          </span>
+          <button
+            className="px-4 py-2 text-2xl md:mr-2 lg:text-3xl"
+            onClick={increment}
+          >
             +
           </button>
         </div>
