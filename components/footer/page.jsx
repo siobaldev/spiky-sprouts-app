@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="md:p-x-10 lg:px-16">
           <hr className="h-0.5 w-full rounded-md border-0 bg-button/60" />
           <p className="py-4 text-center text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
             &#169; All rights reserved.
