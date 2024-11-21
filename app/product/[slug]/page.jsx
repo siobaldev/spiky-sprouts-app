@@ -79,22 +79,22 @@ export default function PlantDetail({ params }) {
             Product Details
           </h1>
           <ul className="flex flex-col gap-y-1 text-sm sm:text-base md:text-base lg:text-lg xl:text-xl">
-            <li className="flex gap-x-8">
-              <span>Size:</span> <span className="opacity-60">18L x 10W</span>
+            <li className="flex gap-x-2">
+              Size: <span className="opacity-60">18L x 10W</span>
             </li>
-            <li className="flex gap-x-8">
-              <span>Weigh:</span> <span className="opacity-60">13kg</span>
+            <li className="flex gap-x-2">
+              Weigh: <span className="opacity-60">13kg</span>
             </li>
-            <li className="flex gap-x-8">
-              <span>Pot Material:</span>
+            <li className="flex gap-x-2">
+              Pot Material:
               <span className="opacity-60">Ceramic</span>
             </li>
-            <li className="flex gap-x-8">
-              <span>Drainage holes:</span>
+            <li className="flex gap-x-2">
+              Drainage holes:
               <span className="opacity-60">Yes</span>
             </li>
-            <li className="flex gap-x-8">
-              <span>Toxic to pets:</span> <span className="opacity-60">No</span>
+            <li className="flex gap-x-2">
+              Toxic to pets: <span className="opacity-60">No</span>
             </li>
           </ul>
         </div>
@@ -103,10 +103,10 @@ export default function PlantDetail({ params }) {
           <h1 className="mb-4 text-lg font-bold sm:text-[1.266rem] md:text-[1.424rem] lg:text-[1.602rem]">
             Care Instruction
           </h1>
-          <div className="max-w-[24rem] lg:max-w-none lg:space-y-2">
+          <div className="max-w-[24rem] space-y-2 lg:max-w-none">
             {plantCare.map((care) => (
-              <div key={care.number} className="flex flex-row items-center">
-                <h1 className="w-7 bg-gradient-to-r from-[#83C949] bg-clip-text font-morangaBlack text-[3rem] text-transparent md:text-[3.3rem]">
+              <div key={care.number} className="flex flex-row gap-x-2">
+                <h1 className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                   {care.number}
                 </h1>
                 <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
@@ -138,7 +138,7 @@ export default function PlantDetail({ params }) {
                       height={90}
                     />
 
-                    <p className="text-sm font-light opacity-60 md:text-base lg:text-lg xl:text-xl">
+                    <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                       The {plant.name} I ordered arrived in perfect condition.
                       Its unique shape adds a nice touch to my plant collection!
                     </p>
@@ -158,7 +158,7 @@ export default function PlantDetail({ params }) {
                       height={90}
                     />
 
-                    <p className="text-sm font-light opacity-60 md:text-base lg:text-lg xl:text-xl">
+                    <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                       I love how low-maintenance this plant is! It's thriving
                       even with minimal care. Highly recommend for beginners.
                     </p>
@@ -178,7 +178,7 @@ export default function PlantDetail({ params }) {
                       height={90}
                     />
 
-                    <p className="text-sm font-light opacity-60 md:text-base lg:text-lg xl:text-xl">
+                    <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                       Looks stunning! The colors are so vibrant, and the plant
                       was packed very well.
                     </p>
@@ -198,7 +198,7 @@ export default function PlantDetail({ params }) {
                       height={90}
                     />
 
-                    <p className="text-sm font-light opacity-60 md:text-base lg:text-lg xl:text-xl">
+                    <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                       The pot color and shape are so cute, and the plant is just
                       the right size. Definitely happy with my purchase.
                     </p>
@@ -218,7 +218,7 @@ export default function PlantDetail({ params }) {
                       height={90}
                     />
 
-                    <p className="text-sm font-light opacity-60 md:text-base lg:text-lg xl:text-xl">
+                    <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
                       Such a healthy plant! It's already sprouting new growth. I
                       can't wait to see how it develops over time.
                     </p>
