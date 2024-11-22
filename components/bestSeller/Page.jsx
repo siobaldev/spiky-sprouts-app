@@ -1,6 +1,7 @@
 import React from "react";
 import { plants } from "@/lib/data";
 import Card from "@/components/card/Page";
+import Link from "next/link";
 
 export default function BestSeller() {
   const bestPlants = plants.filter((plant) => plant.tag.includes("Best"));
@@ -22,15 +23,17 @@ export default function BestSeller() {
       </div>
       <div className="mx-auto flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
         {bestPlants.map((plant) => (
-          <Card
-            key={plant.id}
-            name={plant.name}
-            imageName={plant.image}
-            rate={plant.rate}
-            reviews={plant.reviews}
-            salePrice={plant.salePrice}
-            price={plant.price}
-          />
+          <Link href={`/product/${plant.slug}`} key={plant.id}>
+            <Card
+              key={plant.id}
+              name={plant.name}
+              imageName={plant.image}
+              rate={plant.rate}
+              reviews={plant.reviews}
+              salePrice={plant.salePrice}
+              price={plant.price}
+            />
+          </Link>
         ))}
       </div>
     </section>
