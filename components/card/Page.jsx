@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
-import Favorite from "../favorite/page";
+import Favorite from "@/components/favorite/page";
 import ClientWrapper from "@/context/ClientWrapper";
 
 const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
