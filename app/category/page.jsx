@@ -17,13 +17,6 @@ export default function ShopByCategory() {
     setFilteredItems(filtered);
   }, [selectedCategory]);
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get("Category");
-    if (category) {
-      setSelectedCategory(category);
-    }
-  }, []);
   return (
     <div className="p-36">
       <div className="flex flex-col gap-y-8">

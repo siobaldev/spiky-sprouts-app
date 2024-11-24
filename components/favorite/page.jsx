@@ -17,6 +17,9 @@ export default function Favorite() {
           alt="Wishlist"
           width={20}
           height={20}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
         />
       ) : (
         <Image
@@ -24,6 +27,9 @@ export default function Favorite() {
           alt="Wishlist"
           width={20}
           height={20}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
         />
       )}
     </button>

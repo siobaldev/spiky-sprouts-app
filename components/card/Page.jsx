@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
@@ -45,7 +47,12 @@ const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
             <p className="opacity-87">${price}</p>
           )}
         </div>
-        <button className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base">
+        <button
+          className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Add to cart
         </button>
       </div>
