@@ -1,11 +1,10 @@
-// app/plants/[slug]/page.js
 import { plants, plantCare } from "@/lib/data";
 import { getImageUrl } from "@/lib/utils";
 import Image from "next/image";
 import ColorSelector from "@/components/potColor/page";
 import Quantity from "@/components/quantity/page";
 import Rating from "@/components/rating/page";
-// Generate static params
+
 export async function generateStaticParams() {
   return plants.map((plant) => ({
     slug: plant.slug,
