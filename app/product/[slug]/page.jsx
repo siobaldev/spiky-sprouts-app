@@ -46,12 +46,20 @@ export default function PlantDetail({ params }) {
                 </p>
               </div>
               <div className="flex flex-row items-center justify-between gap-x-2">
-                <span className="text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
-                  ${plant.salePrice}
-                </span>
-                <span className="line-through opacity-60 md:text-[1.4rem] lg:text-[2rem]">
-                  ${plant.price}
-                </span>
+                {plant.salePrice ? (
+                  <>
+                    <span className="text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                      ${plant.salePrice}
+                    </span>
+                    <span className="line-through opacity-60 md:text-[1.4rem] lg:text-[2rem]">
+                      ${plant.price}
+                    </span>
+                  </>
+                ) : (
+                  <span className="ext-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                    ${plant.price}
+                  </span>
+                )}{" "}
                 <hr className="h-[1px] w-full grow rounded-md border-0 bg-white/60" />
                 <span className="whitespace-nowrap text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
                   40 in stock
