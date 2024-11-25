@@ -118,8 +118,8 @@ export default function PlantDetail({ params }) {
         </div>
 
         <div className="space-y-8">
-          <div className="md:space-y-8 lg:flex lg:flex-row-reverse lg:justify-between lg:gap-x-4 lg:space-y-0">
-            <Rating rate={plant.rate} />
+          <div className="space-y-8 lg:flex lg:flex-row-reverse lg:justify-between lg:gap-x-4 lg:space-y-0">
+            <Rating rate={plant.rate} review={plant.reviews} />
             <div className="space-y-4 lg:max-w-[40rem]">
               <h1 className="text-lg font-bold sm:text-[1.266rem] md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
                 Reviews
