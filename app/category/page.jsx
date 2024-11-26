@@ -13,9 +13,17 @@ export default function ShopByCategory() {
     const filtered =
       selectedCategory === "All"
         ? plants
-        : plants.filter((item) => item.category === selectedCategory);
+        : plants.filter((item) => item.tag.includes(selectedCategory));
     setFilteredItems(filtered);
   }, [selectedCategory]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, []);
 
   return (
     <div className="p-36">

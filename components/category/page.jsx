@@ -22,7 +22,7 @@ export default function Category() {
       {/* grid grid-cols-2 place-items-center gap-y-12 max-[520px]:grid-cols-1 */}
       <div className="flex flex-row items-center justify-center gap-12 max-[460px]:flex-col md:text-xl lg:text-2xl xl:text-3xl">
         <ClientWrapper>
-          <Link href="/category?category=all" className="space-y-2">
+          <Link href="/category?category=All" className="space-y-2">
             <div className="relative size-52 bg-[url('/assets/all-bg.svg')] bg-cover md:size-64 lg:size-80">
               <Image
                 className="absolute left-8 top-8 size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:size-40 lg:drop-shadow-lg"
@@ -52,7 +52,7 @@ export default function Category() {
         </ClientWrapper>
         <div className="space-y-8">
           <ClientWrapper>
-            <Link href="/category?category=cactus" className="space-y-2">
+            <Link href="/category?category=Cactus" className="space-y-2">
               <div className="flex size-40 items-center justify-center bg-[url('/assets/cactus-bg.svg')] bg-cover md:size-52 lg:size-60">
                 <Image
                   className="size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:drop-shadow-lg"
@@ -72,7 +72,7 @@ export default function Category() {
             </Link>
           </ClientWrapper>
           <ClientWrapper>
-            <Link href="/category?category=succulent" className="space-y-2">
+            <Link href="/category?category=Succulent" className="space-y-2">
               <div className="flex size-40 items-center justify-center bg-[url('/assets/succulent-bg.svg')] bg-cover md:size-52 lg:size-60">
                 <Image
                   className="size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:drop-shadow-lg"
