@@ -2,13 +2,13 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <section className="container mx-auto h-dvh max-w-[1280px] px-8 py-24 md:px-16 md:pt-28">
+    <section className="container mx-auto max-w-[1280px] px-8 py-24 md:px-16 md:pt-[11rem]">
       <div className="flex flex-col-reverse justify-center gap-y-10 lg:flex-row-reverse lg:gap-x-16">
         <div className="flex flex-col gap-y-8 p-6 sm:p-8 md:p-10 lg:w-[40%]">
           <div className="flex gap-x-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 opacity-87 md:w-12 lg:w-14"
+              className="w-10 opacity-60 md:w-12 lg:w-14"
               viewBox="0 0 24 24"
             >
               <path
@@ -35,7 +35,7 @@ export default function Contact() {
           <div className="flex gap-x-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 opacity-87 md:w-12 lg:w-14"
+              className="w-10 opacity-60 md:w-12 lg:w-14"
               viewBox="0 0 24 24"
             >
               <g fill="none" fillRule="evenodd">
@@ -66,7 +66,7 @@ export default function Contact() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 opacity-87 md:w-12 lg:w-14"
+              className="w-10 opacity-60 md:w-12 lg:w-14"
             >
               <path
                 d="M14.5562 15.5477L14.1007 16.0272C14.1007 16.0272 13.0181 17.167 10.0631 14.0559C7.10812 10.9448 8.1907 9.80507 8.1907 9.80507L8.47752 9.50311C9.18407 8.75924 9.25068 7.56497 8.63424 6.6931L7.37326 4.90961C6.61028 3.8305 5.13596 3.68795 4.26145 4.60864L2.69185 6.26114C2.25823 6.71766 1.96765 7.30945 2.00289 7.96594C2.09304 9.64546 2.81071 13.259 6.81536 17.4752C11.0621 21.9462 15.0468 22.1239 16.6763 21.9631C17.1917 21.9122 17.6399 21.6343 18.0011 21.254L19.4217 19.7584C20.3806 18.7489 20.1102 17.0182 18.8833 16.312L16.9728 15.2123C16.1672 14.7486 15.1858 14.8848 14.5562 15.5477Z"
