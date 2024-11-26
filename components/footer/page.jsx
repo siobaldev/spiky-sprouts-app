@@ -11,11 +11,6 @@ import {
 export default function Footer() {
   return (
     <footer className="relative bg-button/10 px-8 pt-8">
-      <div className="absolute right-8 top-8 flex size-9 cursor-pointer rounded-full bg-button hover:animate-bounce lg:right-16 xl:right-40">
-        <Link href="#home" className="flex w-full items-center justify-center">
-          <ArrowIcon className="-rotate-90" />
-        </Link>
-      </div>
       <div className="container mx-auto max-w-[1280px]">
         <div className="flex flex-col justify-between gap-y-8 md:p-10 lg:flex-row lg:px-16">
           <div className="flex flex-col gap-y-2">
