@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <section className="container mx-auto max-w-[1280px] px-8 py-24 md:px-16 md:pt-[11rem]">
+    <section className="container mx-auto max-w-[1280px] px-8 pb-16 md:px-16 md:pb-[5rem] md:pt-[7rem] lg:pb-[7rem] lg:pt-[11rem]">
       <div className="flex flex-col-reverse justify-center gap-y-10 lg:flex-row-reverse lg:gap-x-16">
         <div className="flex flex-col gap-y-8 p-6 sm:p-8 md:p-10 lg:w-[40%]">
           <div className="flex gap-x-4">
