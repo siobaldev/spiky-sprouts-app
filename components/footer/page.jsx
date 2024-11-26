@@ -57,10 +57,10 @@ export default function Footer() {
             <div className="space-y-2 md:space-y-3">
               <h1 className="font-bold opacity-87">Sitemap</h1>
               <ul className="flex flex-col gap-y-2 opacity-60 md:gap-3">
-                <a href="#newArrival">New Arrival</a>
-                <a href="#bestSeller">BestSeller</a>
-                <a href="#category">Category</a>
-                <a href="#plantCare">Plant Care</a>
+                <a href="/#newArrival">New Arrival</a>
+                <a href="/#bestSeller">BestSeller</a>
+                <a href="/#category">Category</a>
+                <a href="/#plantCare">Plant Care</a>
               </ul>
             </div>
             <div className="space-y-2 md:space-y-3">
