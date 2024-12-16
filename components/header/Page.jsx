@@ -3,10 +3,8 @@
 import React, { useState, useEffect } from "react";
 import MobileNav from "@/components/nav/MobileNav";
 import { NavItems } from "@/lib/data";
-import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import "@/app/globals.css";
 
 export default function Header() {

@@ -97,13 +97,13 @@ export default function Contact() {
         <div className="space-y-8 rounded-3xl bg-button/10 p-6 sm:p-8 md:p-10 lg:w-[60%]">
           <div className="flex flex-col gap-y-2">
             <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
-              We're Here to Help
+              We&apos;re Here to Help
             </h1>
             {/* md:w-[34rem] lg:w-[38rem] xl:w-[40rem] */}
             <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
               Got questions about your order, products, or anything else? Fill
-              out the form below or reach out via phone or email, and we'll get
-              back to you as soon as possible.
+              out the form below or reach out via phone or email, and we&apos;ll
+              get back to you as soon as possible.
             </p>
           </div>
 

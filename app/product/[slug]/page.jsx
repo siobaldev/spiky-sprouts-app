@@ -166,8 +166,9 @@ export default function PlantDetail({ params }) {
                     />
 
                     <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
-                      I love how low-maintenance this plant is! It's thriving
-                      even with minimal care. Highly recommend for beginners.
+                      I love how low-maintenance this plant is! It&apos;s
+                      thriving even with minimal care. Highly recommend for
+                      beginners.
                     </p>
                   </div>
                   <p className="text-xs opacity-38">3/15/2024</p>
@@ -226,8 +227,9 @@ export default function PlantDetail({ params }) {
                     />
 
                     <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
-                      Such a healthy plant! It's already sprouting new growth. I
-                      can't wait to see how it develops over time.
+                      Such a healthy plant! It&apos;s already sprouting new
+                      growth. I can&apos;t wait to see how it develops over
+                      time.
                     </p>
                   </div>
                   <p className="text-xs opacity-38">7/8/2023</p>

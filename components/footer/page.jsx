@@ -28,8 +28,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="w-72 text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
-              Sculpting nature's beauty into unique creations for your living
-              spaces.
+              Sculpting nature&apos;s beauty into unique creations for your
+              living spaces.
             </p>
             <div className="flex items-center gap-x-4">
               <div className="group relative flex size-9 cursor-pointer items-center justify-center rounded-full bg-button/60">
