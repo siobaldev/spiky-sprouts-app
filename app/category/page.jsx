@@ -26,7 +26,7 @@ export default function ShopByCategory() {
   }, []);
 
   return (
-    <div className="p-36">
+    <div className="px-10 py-32 md:px-20 lg:p-36">
       <div className="flex flex-col gap-y-8">
         <div className="flex justify-center gap-x-5 font-bold text-white/[.87]">
           <button
