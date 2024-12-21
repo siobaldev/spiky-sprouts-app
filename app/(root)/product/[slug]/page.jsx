@@ -33,10 +33,10 @@ export default function PlantDetail({ params }) {
                 unoptimized={true}
               />
             </div>
-            <div className="flex flex-col gap-y-6 xl:gap-y-10">
+            <div className="flex flex-col gap-y-4 md:gap-y-6">
               <div className="space-y-2 lg:space-y-6">
                 <h1 className="w-fit rounded-full bg-accent/20 px-4 py-1 font-morangaBlack uppercase text-accent">
-                  Cactus
+                  {plant.tag[2]}
                 </h1>
                 <h2 className="font-morangaBlack text-2xl font-bold uppercase md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                   {plant.name}
@@ -56,7 +56,7 @@ export default function PlantDetail({ params }) {
                     </span>
                   </>
                 ) : (
-                  <span className="ext-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                  <span className="text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                     ${plant.price}
                   </span>
                 )}{" "}
