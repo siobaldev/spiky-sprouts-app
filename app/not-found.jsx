@@ -7,7 +7,7 @@ export default function NotFound() {
         404 - Page Not Found
       </h1>
       <p className="text-center text-base lg:text-xl">
-        Oops! It seems the page you're looking for doesn't exist.
+        Oops! It seems the page you&apos;re looking for doesn&apos;t exist.
       </p>
       <Link href="/">
         <button className="group flex h-11 items-center gap-x-4 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] hover:border-hover hover:bg-hover xl:text-base">
