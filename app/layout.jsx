@@ -1,7 +1,5 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/header/Page";
-import Footer from "@/components/footer/page";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,9 +33,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} min-w-80 bg-primary bg-noise font-sans text-white/87 bg-blend-overlay`}
       >
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
