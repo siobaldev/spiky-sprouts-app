@@ -1,6 +1,6 @@
 import React from "react";
 import { plants } from "@/lib/data";
-import Card from "@/components/card/Page";
+import Card from "@/components/ui/card/Page";
 import Link from "next/link";
 
 export default function BestSeller() {

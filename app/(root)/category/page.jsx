@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { plants } from "@/lib/data";
 import Link from "next/link";
-import Card from "@/components/card/Page";
+import Card from "@/components/ui/card/Page";
 
 export default function ShopByCategory() {
   const [selectedCategory, setSelectedCategory] = useState("All");

@@ -1,9 +1,9 @@
 import { plants, plantCare } from "@/lib/data";
 import { getImageUrl } from "@/lib/utils";
 import Image from "next/image";
-import ColorSelector from "@/components/potColor/page";
-import Quantity from "@/components/quantity/page";
-import Rating from "@/components/rating/page";
+import ColorSelector from "@/components/ui/potColor/page";
+import Quantity from "@/components/ui/quantity/page";
+import Rating from "@/components/ui/rating/page";
 
 export async function generateStaticParams() {
   return plants.map((plant) => ({
