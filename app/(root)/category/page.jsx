@@ -4,8 +4,16 @@ import { useState, useEffect } from "react";
 import { plants } from "@/lib/data";
 import Link from "next/link";
 import Card from "@/components/ui/card/Page";
+import { notFound } from "next/navigation";
 
-export default function ShopByCategory() {
+export default function ShopByCategory({ searchParams }) {
+  const { category } = searchParams;
+  const validCategories = ["all", "cactus", "succulent"];
+
+  if (!validCategories.includes(category?.toLowerCase())) {
+    notFound();
+  }
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredItems, setFilteredItems] = useState([]);
 
