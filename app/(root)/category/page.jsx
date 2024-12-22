@@ -8,9 +8,9 @@ import { notFound } from "next/navigation";
 
 export default function ShopByCategory({ searchParams }) {
   const { category } = searchParams;
-  const validCategories = ["all", "cactus", "succulent"];
+  const validCategories = ["All", "Cactus", "Succulent"];
 
-  if (!validCategories.includes(category?.toLowerCase())) {
+  if (!validCategories.includes(category)) {
     notFound();
   }
 

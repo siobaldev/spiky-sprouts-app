@@ -38,7 +38,7 @@ export default function PlantDetail({ params }) {
                 <h1 className="w-fit rounded-full bg-accent/20 px-4 py-1 font-morangaBlack uppercase text-accent">
                   {plant.tag[2]}
                 </h1>
-                <h2 className="font-morangaBlack text-2xl font-bold uppercase md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                <h2 className="font-morangaBlack text-2xl font-bold uppercase leading-tight md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                   {plant.name}
                 </h2>
                 <p className="text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
