@@ -22,8 +22,8 @@ export default function PlantDetail({ params }) {
     <section className="container mx-auto mb-24 mt-24 max-w-[1280px] px-8 max-[350px]:px-5 md:mt-20 md:px-16 lg:mt-32">
       <div className="flex flex-col gap-y-10 md:gap-y-14 lg:gap-y-16 xl:gap-y-20">
         <div className="container mx-auto w-full rounded-3xl bg-button/10 p-6 max-[380px]:px-4 sm:p-8 md:px-14 lg:rounded-[2.5rem] lg:px-8 lg:pb-16 xl:px-16">
-          <div className="just flex flex-col gap-y-4 lg:flex-row lg:gap-x-8">
-            <div className="flex w-full items-center justify-center">
+          <div className="flex flex-col lg:flex-row lg:gap-x-8">
+            <div className="flex items-center justify-center lg:w-[45%]">
               <Image
                 className="size-44 drop-shadow-sm max-[380px]:size-40 sm:size-60 md:size-72 lg:size-80 xl:size-96"
                 src={getImageUrl(plant.image)}
@@ -33,19 +33,19 @@ export default function PlantDetail({ params }) {
                 unoptimized={true}
               />
             </div>
-            <div className="flex flex-col gap-y-4 md:gap-y-6">
+            <div className="flex flex-col gap-y-4 md:gap-y-6 lg:w-[55%] lg:gap-y-8">
               <div className="space-y-2 lg:space-y-6">
                 <h1 className="w-fit rounded-full bg-accent/20 px-4 py-1 font-morangaBlack uppercase text-accent">
                   {plant.tag[2]}
                 </h1>
-                <h2 className="font-morangaBlack text-2xl font-bold uppercase leading-tight md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                <h2 className="font-morangaBlack text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                   {plant.name}
                 </h2>
                 <p className="text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
                   {plant.description}
                 </p>
               </div>
-              <div className="flex flex-row items-center justify-between gap-x-2">
+              <div className="flex flex-row items-center justify-between gap-x-4">
                 {plant.salePrice ? (
                   <>
                     <span className="text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
@@ -59,7 +59,7 @@ export default function PlantDetail({ params }) {
                   <span className="text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                     ${plant.price}
                   </span>
-                )}{" "}
+                )}
                 <hr className="h-[1px] w-full grow rounded-md border-0 bg-white/60" />
                 <span className="whitespace-nowrap text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
                   40 in stock
