@@ -23,7 +23,7 @@ export default function NewArrival() {
         </div>
         <div className="flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
           {newPlants.map((plant) => (
-            <Link href={`/product/${plant.slug}`} key={plant.id}>
+            <Link href={`/category/All/product/${plant.slug}`} key={plant.id}>
               <Card
                 name={plant.name}
                 imageName={plant.image}

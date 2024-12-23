@@ -4,22 +4,32 @@ import Image from "next/image";
 import ColorSelector from "@/components/ui/potColor/page";
 import Quantity from "@/components/ui/quantity/page";
 import Rating from "@/components/ui/rating/page";
-
-export async function generateStaticParams() {
-  return plants.map((plant) => ({
-    slug: plant.slug,
-  }));
-}
+import Link from "next/link";
 
 export default function PlantDetail({ params }) {
-  const plant = plants.find((p) => p.slug === params.slug);
-
-  if (!plant) {
-    return <div>Plant not found</div>;
-  }
+  const { category, slug } = params;
+  const plant = plants.find((item) => item.slug === slug);
 
   return (
     <section className="container mx-auto mb-24 mt-24 max-w-[1280px] px-8 max-[350px]:px-5 md:mt-20 md:px-16 lg:mt-32">
+      <nav className="mb-8">
+        <ol className="flex gap-x-2 text-xl">
+          <li>
+            <Link href="/" className="opacity-60">
+              Home
+            </Link>
+          </li>
+          <li className="opacity-60">/</li>
+          <li>
+            <Link href={`/category/${category}`} className="opacity-60">
+              {category}
+            </Link>
+          </li>
+          <li className="opacity-60">/</li>
+          <li>{plant.name}</li>
+        </ol>
+      </nav>
+
       <div className="flex flex-col gap-y-10 md:gap-y-14 lg:gap-y-16 xl:gap-y-20">
         <div className="container mx-auto w-full rounded-3xl bg-button/10 p-6 max-[380px]:px-4 sm:p-8 md:px-14 lg:rounded-[2.5rem] lg:px-8 lg:pb-16 xl:px-16">
           <div className="flex flex-col lg:flex-row lg:gap-x-8">

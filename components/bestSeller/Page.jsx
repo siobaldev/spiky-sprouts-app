@@ -23,7 +23,7 @@ export default function BestSeller() {
       </div>
       <div className="mx-auto flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
         {bestPlants.map((plant) => (
-          <Link href={`/product/${plant.slug}`} key={plant.id}>
+          <Link href={`/category/All/product/${plant.slug}`} key={plant.id}>
             <Card
               key={plant.id}
               name={plant.name}

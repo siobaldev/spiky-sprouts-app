@@ -6,15 +6,15 @@ import Link from "next/link";
 import Card from "@/components/ui/card/Page";
 import { notFound } from "next/navigation";
 
-export default function ShopByCategory({ searchParams }) {
-  const { category } = searchParams;
+export default function ShopByCategory({ params }) {
+  const { category } = params;
   const validCategories = ["All", "Cactus", "Succulent"];
 
   if (!validCategories.includes(category)) {
     notFound();
   }
 
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(category);
   const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
@@ -24,14 +24,6 @@ export default function ShopByCategory({ searchParams }) {
         : plants.filter((item) => item.tag.includes(selectedCategory));
     setFilteredItems(filtered);
   }, [selectedCategory]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get("category");
-    if (category) {
-      setSelectedCategory(category);
-    }
-  }, []);
 
   return (
     <div className="px-10 py-32 md:px-20 lg:p-36">
@@ -65,7 +57,10 @@ export default function ShopByCategory({ searchParams }) {
 
         <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-center gap-8">
           {filteredItems.map((plant) => (
-            <Link href={`/product/${plant.slug}`} key={plant.id}>
+            <Link
+              href={`/category/${selectedCategory}/product/${plant.slug}`}
+              key={plant.id}
+            >
               <Card
                 key={plant.id}
                 name={plant.name}
