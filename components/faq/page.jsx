@@ -10,7 +10,10 @@ export default function Faq() {
     setOpenAccordionId(openAccordionId === id ? null : id);
   };
   return (
-    <section className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14">
+    <section
+      id="faq"
+      className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14"
+    >
       <h1 className="mb-8 text-center font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
         FAQ<span className="lowercase">s</span>
       </h1>
