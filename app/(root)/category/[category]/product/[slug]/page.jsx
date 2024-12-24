@@ -5,10 +5,15 @@ import ColorSelector from "@/components/ui/potColor/page";
 import Quantity from "@/components/ui/quantity/page";
 import Rating from "@/components/ui/rating/page";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default function PlantDetail({ params }) {
   const { category, slug } = params;
   const plant = plants.find((item) => item.slug === slug);
+
+  if (!plant) {
+    return notFound();
+  }
 
   return (
     <section className="container mx-auto mb-24 mt-24 max-w-[1280px] px-8 max-[350px]:px-5 md:mt-20 md:px-16 lg:mt-32">
