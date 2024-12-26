@@ -55,9 +55,9 @@ export default function MobileNav() {
             exit="exit"
             className="fixed left-0 top-0 mb-10 flex h-dvh w-4/5 flex-col bg-primary p-6 shadow-navShadow sm:w-96 md:w-[28rem] md:p-16"
           >
-            <div className="flex flex-col gap-y-12 px-6 py-24 md:px-0">
-              <form>
-                <div className="relative">
+            <div className="flex h-screen flex-col justify-between space-y-12 px-6 py-24 md:px-0">
+              <div className="space-y-14">
+                <form className="relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -81,21 +81,21 @@ export default function MobileNav() {
                     placeholder="Search"
                     className="h-12 w-11/12 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 pl-12 font-bold text-white/60 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button"
                   />
+                </form>
+                <div>
+                  <ul className="flex flex-col gap-3 text-xl">
+                    {NavItems.map((link) => (
+                      <li
+                        key={link.href}
+                        className="list-none transition hover:text-accent"
+                      >
+                        <Link onClick={toggleMenu} href={link.href}>
+                          {link.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </form>
-              <div>
-                <ul className="flex flex-col gap-3 text-xl">
-                  {NavItems.map((link) => (
-                    <li
-                      key={link.href}
-                      className="list-none transition hover:text-accent"
-                    >
-                      <Link onClick={toggleMenu} href={link.href}>
-                        {link.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <div className="mt-12 flex items-center justify-center gap-x-4">
