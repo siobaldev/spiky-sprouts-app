@@ -5,3 +5,10 @@
 ::selection {
   @apply bg-selection; /* Change the colors as needed */
 }
+
+@layer base {
+  :root {
+
+    --radius: 0.5rem
+  }
+}
