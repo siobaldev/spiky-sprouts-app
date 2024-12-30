@@ -10,11 +10,16 @@ import {
 } from "@/components/ui/dialog/page";
 import { Search } from "lucide-react";
 
-export default function SearchBar() {
+export default function SearchBar({ setMovileNavOpen }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+
+  let isMobile = false;
+  if (typeof window !== "undefined") {
+    isMobile = window.matchMedia("(max-width: 1024px)").matches;
+  }
 
   const searchPlants = query
     ? plants
@@ -30,6 +35,9 @@ export default function SearchBar() {
     router.push(`/category/All/product/${plant.slug}`);
     setQuery("");
     setOpen(false);
+    {
+      isMobile ? setMovileNavOpen(false) : "";
+    }
   };
 
   const handleSubmit = (e) => {
@@ -59,12 +67,14 @@ export default function SearchBar() {
 
   return (
     <>
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={setOpen} className="mx-2">
         <DialogTrigger asChild>
-          <button className="flex h-12 w-72 flex-row items-center justify-between rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 font-medium text-white/60 placeholder:opacity-60">
-            <div className="relative space-x-4">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-white/60" />
-              <span className="pl-8">Looking for something?</span>
+          <button className="flex h-12 flex-row items-center justify-between rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 font-medium text-white/60 placeholder:opacity-60 sm:w-60 md:w-72 lg:w-72">
+            <div className="flex flex-row items-center gap-x-2 px-2 lg:px-4">
+              <Search className="size-5 transform text-white/60 max-[380px]:size-4 lg:size-6" />
+              <span className="text-sm max-[380px]:text-xs md:text-base lg:pl-1 lg:text-base">
+                Looking for something?
+              </span>
             </div>
           </button>
         </DialogTrigger>
@@ -73,10 +83,10 @@ export default function SearchBar() {
           className="border-0 bg-primary shadow-lg"
         >
           <DialogHeader>
-            <DialogTitle>Search Plant</DialogTitle>
+            <DialogTitle className="text-left">Search Plant</DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="hidden lg:flex">
-            <div className="flex w-full items-center justify-center border-b border-accent/20 px-3">
+          <form onSubmit={handleSubmit}>
+            <div className="flex w-full items-center border-b border-accent/20 md:px-3">
               <Search className="text-white/60" />
               <input
                 type="text"
@@ -86,7 +96,7 @@ export default function SearchBar() {
                 name="search"
                 autoComplete="off"
                 placeholder="Search plants..."
-                className="flex-1 bg-transparent px-3 py-3 outline-none placeholder:text-white/60"
+                className="w-full bg-transparent px-3 py-3 outline-none placeholder:text-white/60"
               />
               {query && (
                 <button

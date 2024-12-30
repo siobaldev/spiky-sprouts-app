@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { NavItems, FacebookIcon, TwitterIcon, InstagramIcon } from "@/lib/data";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuSlide } from "@/lib/utils";
+import SearchBar from "../ui/searchBar/page";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,35 +54,15 @@ export default function MobileNav() {
             initial="initial"
             animate="enter"
             exit="exit"
-            className="fixed left-0 top-0 mb-10 flex h-dvh w-4/5 flex-col bg-primary p-6 shadow-navShadow sm:w-96 md:w-[28rem] md:p-16"
+            className="fixed left-0 top-0 mb-10 flex h-dvh flex-col bg-primary p-6 shadow-navShadow max-[380px]:p-2 sm:w-96 md:w-[28rem] md:p-16"
           >
             <div className="flex h-screen flex-col justify-between space-y-12 px-6 py-24 md:px-0">
               <div className="space-y-14">
-                <form className="relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 transform text-white/60"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                    <path d="M21 21l-6 -6" />
-                  </svg>
-                  <input
-                    type="text"
-                    id="search"
-                    name="search"
-                    placeholder="Search"
-                    className="h-12 w-11/12 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 pl-12 font-bold text-white/60 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button"
-                  />
-                </form>
+                <SearchBar
+                  setMovileNavOpen={() => {
+                    setIsOpen(false);
+                  }}
+                />
                 <div>
                   <ul className="flex flex-col gap-3 text-xl">
                     {NavItems.map((link) => (
@@ -115,7 +96,7 @@ export default function MobileNav() {
 
         {isOpen && (
           <motion.div
-            className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm md:hidden"
+            className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
