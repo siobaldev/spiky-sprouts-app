@@ -6,6 +6,7 @@ import Quantity from "@/components/ui/quantity/page";
 import Rating from "@/components/ui/rating/page";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AddToCartButton from "@/components/ui/addToCart/page";
 
 export default function PlantDetail({ params }) {
   const { category, slug } = params;
@@ -77,7 +78,7 @@ export default function PlantDetail({ params }) {
                 )}
                 <hr className="h-[1px] w-full grow rounded-md border-0 bg-white/60" />
                 <span className="whitespace-nowrap text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
-                  40 in stock
+                  {plant.quantity} in stock
                 </span>
               </div>
               <div className="flex flex-col md:gap-y-1 lg:gap-y-2">
@@ -90,7 +91,10 @@ export default function PlantDetail({ params }) {
                 <h1 className="text-sm md:text-base lg:text-lg xl:text-xl">
                   Quantity
                 </h1>
-                <Quantity />
+                <div className="flex gap-x-4">
+                  <Quantity plantQuantity={plant.quantity} className="flex-1" />
+                  <AddToCartButton plant={plant} className="flex-1" />
+                </div>
               </div>
             </div>
           </div>
