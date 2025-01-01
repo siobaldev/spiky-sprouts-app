@@ -32,6 +32,7 @@ export default function NewArrival() {
                 salePrice={plant.salePrice}
                 price={plant.price}
                 slug={plant.slug}
+                plant={plant}
               />
             </Link>
           ))}

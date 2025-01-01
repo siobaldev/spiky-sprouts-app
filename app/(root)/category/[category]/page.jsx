@@ -81,6 +81,7 @@ export default function ShopByCategory({ params }) {
                 reviews={plant.reviews}
                 salePrice={plant.salePrice}
                 price={plant.price}
+                plant={plant}
               />
             </Link>
           ))}

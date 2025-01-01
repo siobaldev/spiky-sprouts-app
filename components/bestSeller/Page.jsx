@@ -32,6 +32,7 @@ export default function BestSeller() {
               reviews={plant.reviews}
               salePrice={plant.salePrice}
               price={plant.price}
+              plant={plant}
             />
           </Link>
         ))}

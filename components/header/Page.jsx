@@ -6,6 +6,7 @@ import { NavItems } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "../ui/searchBar/page";
+import Cart from "../cart/page";
 import "@/app/globals.css";
 
 export default function Header() {
@@ -68,14 +69,7 @@ export default function Header() {
           <div className="hidden lg:flex">
             <SearchBar />
           </div>
-
-          <Image
-            className="size-6 opacity-60 sm:size-7 lg:size-8"
-            src="/assets/Cart.svg"
-            alt="cart"
-            width={30}
-            height={30}
-          />
+          <Cart />
         </div>
       </div>
     </header>

@@ -5,8 +5,9 @@ import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
 import Favorite from "@/components/ui/favorite/page";
 import ClientWrapper from "@/context/ClientWrapper";
+import AddToCartButton from "../addToCart/page";
 
-const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
+const Page = ({ name, imageName, rate, reviews, salePrice, price, plant }) => {
   return (
     <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
       <Favorite />
@@ -47,14 +48,7 @@ const Page = ({ name, imageName, rate, reviews, salePrice, price }) => {
             <p className="opacity-87">${price}</p>
           )}
         </div>
-        <button
-          className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
-          Add to cart
-        </button>
+        <AddToCartButton plant={plant} />
       </div>
     </div>
   );
