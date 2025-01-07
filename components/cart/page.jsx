@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
 import { getImageUrl } from "@/lib/utils";
 import { Plus, Minus, Trash2 } from "lucide-react";
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/sheet/page";
 
 export default function Cart() {
+  const router = useRouter();
   const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
 
   return (
@@ -48,7 +50,7 @@ export default function Cart() {
                   {cart.map((plant) => (
                     <div
                       key={plant.id}
-                      className="flex w-full items-center gap-x-4 rounded-lg py-4"
+                      className="flex w-full gap-x-4 rounded-lg py-4"
                     >
                       <Image
                         className="size-24"
@@ -103,10 +105,7 @@ export default function Cart() {
             </div>
             <button
               className="mt-4 w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
-              onClick={() => {
-                // Add your checkout logic here
-                console.log("Proceeding to checkout...");
-              }}
+              onClick={() => router.push("/checkout")}
             >
               Checkout
             </button>
