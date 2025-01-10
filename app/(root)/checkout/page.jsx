@@ -288,7 +288,34 @@ export default function Checkout() {
                   </span>
                 </div>
               ))}
-              <div className="mt-4 border-t border-white/40 pt-4">
+              <div className="flex flex-col gap-y-4 border-t-2 border-dashed border-white/40 pt-4">
+                <div className="flex flex-col gap-y-1">
+                  <label
+                    htmlFor="discount"
+                    className="text-sm md:text-base lg:text-lg xl:text-xl"
+                  >
+                    Discount Code
+                  </label>
+                  <div className="flex gap-x-2">
+                    <input
+                      className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                      type="text"
+                      id="discount"
+                      required
+                    />
+                    <button className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-sm text-white/38 md:text-base lg:text-lg xl:text-xl">
+                  New Customer? <span className="underline">Sign up</span> to
+                  get better offer
+                </p>
+              </div>
+
+              <div className="border-t-2 border-dashed border-white/40 pt-4">
                 <div className="flex justify-between text-sm md:text-base lg:text-lg xl:text-xl">
                   <span>Subtotal</span>
                   <span>${getCartTotal().toFixed(2)}</span>
@@ -297,10 +324,13 @@ export default function Checkout() {
                   <span>Shipping Fee</span>
                   <span>$0</span>
                 </div>
-                <div className="mt-4 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
+                <div className="mb-4 mt-4 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
                   <span>Total</span>
                   <span>${getCartTotal().toFixed(2)}</span>
                 </div>
+                <button className="w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base">
+                  Confirm Order
+                </button>
               </div>
             </div>
           </div>
