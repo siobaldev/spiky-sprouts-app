@@ -9,13 +9,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { useFormData } from "@/context/FormDataProvider";
 
 export default function Checkout() {
-  const { cart, getCartTotal } = useCart();
+  const { cart, getCartTotal, confirmOrder } = useCart();
+  const { setFormData } = useFormData();
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  const [paymentMethod, setPaymentMethod] = useState("credit");
+  const [paymentMethods, setPaymentMethods] = useState("credit");
   const [loadingStates, setLoadingStates] = useState({
     countries: false,
     states: false,
@@ -28,8 +30,13 @@ export default function Checkout() {
     setLoadingStates((prev) => ({ ...prev, [key]: isLoading }));
   };
 
-  const handleActiveRadio = (radio) => {
-    setPaymentMethod(radio);
+  const handlePaymentMethod = (method) => {
+    setValue("paymentMethod", method);
+    setPaymentMethods(method);
+
+    const paymentStatus =
+      method === "credit" || method === "paypal" ? "Paid" : "Cash on Delivery";
+    setValue("paymentStatus", paymentStatus);
   };
 
   const getCheckoutSchema = (paymentMethod) => {
@@ -73,11 +80,18 @@ export default function Checkout() {
             ),
           { message: "Please select a valid state from the list" },
         ),
-      zipCode: z.string().regex(/^\d{5}(-\d{4})?$/, "Enter a valid ZIP code"),
+      zipCode: z
+        .string()
+        .regex(
+          /^(?=[A-Za-z0-9 -]{2,11}$)[A-Za-z0-9]+(?:[ -][A-Za-z0-9]+)?$/,
+          "Enter a valid ZIP code",
+        ),
       street: z
         .string()
         .min(5, "Address must be at least 5 characters")
         .max(100, "Address must be less than 100 characters"),
+      paymentMethod: z.string(),
+      paymentStatus: z.string(),
     };
 
     if (paymentMethod === "credit") {
@@ -102,17 +116,21 @@ export default function Checkout() {
   const {
     register,
     handleSubmit,
-    reset,
-    control,
+    setValue,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(getCheckoutSchema(paymentMethod)),
+    resolver: zodResolver(getCheckoutSchema(paymentMethods)),
   });
 
-  const onSubmit = () => {
-    router.push("/thank-you");
+  const onSubmit = (userData) => {
+    setFormData(userData);
+    confirmOrder();
+
+    router.push("/thank-you?");
   };
+
   const apiKey = process.env.NEXT_PUBLIC_COUNTRY_STATE_CITY_API;
+
   const fetchCountries = async () => {
     updateLoadingState("countries", true);
     try {
@@ -188,7 +206,6 @@ export default function Checkout() {
     );
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
-      console.log(iso2);
       setSelectedCountry(iso2);
       fetchStates(iso2);
     }
@@ -200,7 +217,6 @@ export default function Checkout() {
     );
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
-      console.log(iso2);
       fetchCities(selectedCountry, iso2);
     }
   };
@@ -228,6 +244,8 @@ export default function Checkout() {
                     className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="fullName"
+                    name="fullName"
+                    value="Minard Siobal"
                   />
                   {errors.fullName && (
                     <p className="mt-1 text-sm text-red-500">
@@ -247,6 +265,8 @@ export default function Checkout() {
                     className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="email"
+                    name="email"
+                    value="mnrdzxc@gmail.com"
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500">
@@ -266,6 +286,8 @@ export default function Checkout() {
                     className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="phone"
+                    name="phone"
+                    value="09666826008"
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-500">
@@ -286,12 +308,10 @@ export default function Checkout() {
                     type="text"
                     id="country"
                     list="countries"
+                    name="country"
                     placeholder={loadingStates.countries ? "Loading..." : ""}
                     onChange={(e) => handleCountryChange(e)}
                   />
-
-                  {/* // TODO : add thank you page! */}
-
                   <datalist id="countries">
                     {countries.map((country) => (
                       <option
@@ -322,6 +342,7 @@ export default function Checkout() {
                     type="text"
                     id="state"
                     list="states"
+                    name="state"
                     placeholder={loadingStates.states ? "Loading..." : ""}
                     onChange={(e) => handleStateChange(e)}
                   />
@@ -354,6 +375,7 @@ export default function Checkout() {
                     type="text"
                     id="city"
                     list="cities"
+                    name="city"
                     placeholder={loadingStates.cities ? "Loading..." : ""}
                   />
                   <datalist id="cities">
@@ -380,6 +402,8 @@ export default function Checkout() {
                     className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="zipCode"
+                    name="zipCode"
+                    value="6500"
                   />
                   {errors.zipCode && (
                     <p className="text-sm text-red-500">
@@ -399,6 +423,8 @@ export default function Checkout() {
                     className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="street"
+                    name="street"
+                    value="Brgy 92 apitong"
                   />
                   {errors.street && (
                     <p className="text-sm text-red-500">
@@ -418,16 +444,20 @@ export default function Checkout() {
                     Select payment method
                   </label>
                   <RadioGroup
-                    defaultValue="credit"
+                    defaultValue={paymentMethods}
+                    onValueChange={handlePaymentMethod}
+                    name="paymentMethod"
                     className="flex flex-col gap-y-8"
                   >
                     <div>
                       <div className="mb-4 flex items-center space-x-2">
                         <RadioGroupItem
+                          {...register("paymentMethod")}
                           id="credit"
                           value="credit"
-                          onClick={() => handleActiveRadio("credit")}
-                          className={`border-0 bg-primary focus:bg-primary ${paymentMethod === "credit" ? "border border-button" : ""}`}
+                          name="paymentMethod"
+                          // onClick={() => handlePaymentMethod("credit")}
+                          className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "credit" ? "border border-button" : ""}`}
                         />
                         <label
                           htmlFor="credit"
@@ -499,10 +529,12 @@ export default function Checkout() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem
+                        {...register("paymentMethod")}
                         id="paypal"
                         value="paypal"
-                        onClick={() => handleActiveRadio("paypal")}
-                        className={`border-0 bg-primary focus:bg-primary ${paymentMethod === "paypal" ? "border border-button" : ""}`}
+                        name="paymentMethod"
+                        // onClick={() => handlePaymentMethod("paypal")}
+                        className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "paypal" ? "border border-button" : ""}`}
                       />
                       <label
                         htmlFor="paypal"
@@ -513,19 +545,25 @@ export default function Checkout() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem
-                        id="cashOnDelivery"
-                        value="CashOnDelivery"
-                        onClick={() => handleActiveRadio("CashOnDelivery")}
-                        className={`border-0 bg-primary focus:bg-primary ${paymentMethod === "CashOnDelivery" ? "border border-button" : ""}`}
+                        {...register("paymentMethod")}
+                        id="cash"
+                        value="cash"
+                        name="paymentMethod"
+                        // onClick={() => handlePaymentMethod("cash")}
+                        className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "cash" ? "border border-button" : ""}`}
                       />
                       <label
-                        htmlFor="cashOnDelivery"
+                        htmlFor="cash"
                         className="text-sm md:text-base lg:text-lg xl:text-xl"
                       >
                         Cash on Delivery
                       </label>
                     </div>
                   </RadioGroup>
+                  <input
+                    type="hidden" // Make the input hidden
+                    {...register("paymentStatus")} // Register the field
+                  />
                 </div>
               </div>
             </div>
@@ -622,160 +660,4 @@ export default function Checkout() {
       </form>
     </div>
   );
-}
-
-{
-  /* <Controller
-name="country"
-control={control}
-render={({ field }) => (
-  <div className="flex flex-col gap-y-1">
-    <label
-      className="text-sm md:text-base lg:text-lg xl:text-xl"
-      htmlFor="country"
-    >
-      Country
-    </label>
-    <Select
-      onValueChange={(value) => {
-        field.onChange(value);
-        setSelectedCountry(value);
-        fetchStates(value);
-      }}
-      value={field.value}
-    >
-      <SelectTrigger className="h-[50px] w-full border-2 border-white/[0.05] bg-white/[0.02] text-sm placeholder:text-white/38 focus:border-button focus:ring-0 focus:ring-offset-0 md:text-base lg:text-lg xl:text-xl">
-        <SelectValue
-          placeholder={
-            isLoading ? "Loading..." : "Select Country"
-          }
-        />
-      </SelectTrigger>
-      <SelectContent className="border-accent/10 bg-primary text-white/87 focus:ring-0">
-        <SelectGroup>
-          {countries.map((country) => (
-            <SelectItem
-              key={country.iso2}
-              className="text-sm focus:bg-accent/10 focus:text-white/100 md:text-base lg:text-lg xl:text-xl"
-              value={country.iso2}
-            >
-              {country.name}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-    {errors.country && (
-      <p className="text-sm text-red-500">
-        {errors.country.message}
-      </p>
-    )}
-  </div>
-)}
-/>
-
- */
-}
-
-{
-  /* <Controller
-name="state"
-control={control}
-render={({ field }) => (
-  <div className="flex flex-col gap-y-1">
-    <label
-      className="text-sm md:text-base lg:text-lg xl:text-xl"
-      htmlFor="state"
-    >
-      State/Province
-    </label>
-    <Select
-      onValueChange={(value) => {
-        field.onChange(value);
-        fetchCities(selectedCountry, value);
-      }}
-      value={field.value}
-    >
-      <SelectTrigger className="h-[50px] w-full border-2 border-white/[0.05] bg-white/[0.02] text-sm placeholder:text-white/38 focus:border-button focus:ring-0 focus:ring-offset-0 md:text-base lg:text-lg xl:text-xl">
-        <SelectValue
-          placeholder={
-            isLoading ? "Loading..." : "Select state"
-          }
-        />
-      // className="text-sm focus:bg-accent/10 focus:text-white/100 md:text-base lg:text-lg xl:text-xl"
-      </SelectTrigger>
-      <SelectContent className="border-accent/10 bg-primary text-white/87 focus:ring-0">
-        <SelectGroup>
-          {states.length > 0 ? (
-            states.map((state) => (
-              <SelectItem key={state.iso2} value={state.iso2}>
-                {state.name}
-              </SelectItem>
-            ))
-          ) : (
-            <SelectItem value="0" disabled>
-              No states found
-            </SelectItem>
-          )}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-    {errors.states && (
-      <p className="text-sm text-red-500">
-        {errors.states.message}
-      </p>
-    )}
-  </div>
-)}
-/>
-
-<Controller
-name="city"
-control={control}
-render={({ field }) => (
-  <div className="flex flex-col gap-y-1">
-    <label
-      className="text-sm md:text-base lg:text-lg xl:text-xl"
-      htmlFor="city"
-    >
-      City
-    </label>
-    <Select
-      onValueChange={(value) => {
-        field.onChange(value);
-      }}
-      value={field.value}
-    >
-      <SelectTrigger className="h-[50px] w-full border-2 border-white/[0.05] bg-white/[0.02] text-sm placeholder:text-white/38 focus:border-button focus:ring-0 focus:ring-offset-0 md:text-base lg:text-lg xl:text-xl">
-        <SelectValue
-          placeholder={
-            isLoading ? "Loading..." : "Select state"
-          }
-        />
-
-      </SelectTrigger>
-      <SelectContent className="border-accent/10 bg-primary text-white/87 focus:ring-0">
-        <SelectGroup>
-          {cities.length > 0 ? (
-            cities.map((city) => (
-              <SelectItem key={city.id} value={city.id}>
-                {city.name}
-              </SelectItem>
-            ))
-          ) : (
-            <SelectItem value="0" disabled>
-              No cities found
-            </SelectItem>
-          )}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-    {errors.cities && (
-      <p className="text-sm text-red-500">
-        {errors.cities.message}
-      </p>
-    )}
-  </div>
-)}
-/> */
 }
