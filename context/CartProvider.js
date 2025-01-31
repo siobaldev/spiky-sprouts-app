@@ -6,6 +6,7 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [confirmedOrders, setConfirmedOrders] = useState(null);
 
   const addToCart = (plant) => {
     setCart((prevCart) => {
@@ -29,6 +30,11 @@ export function CartProvider({ children }) {
         { ...plant, quantity: 1, plantStock: plant.quantity },
       ];
     });
+  };
+
+  const confirmOrder = () => {
+    setConfirmedOrders([...cart]);
+    setCart([]);
   };
 
   const removeFromCart = (productId) => {
@@ -70,6 +76,8 @@ export function CartProvider({ children }) {
         updateQuantity,
         getCartCount,
         getCartTotal,
+        confirmedOrders,
+        confirmOrder,
       }}
     >
       {children}
