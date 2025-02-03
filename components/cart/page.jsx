@@ -15,7 +15,13 @@ import {
 
 export default function Cart() {
   const router = useRouter();
-  const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const {
+    cart,
+    removeFromCart,
+    updateQuantity,
+    getCartTotal,
+    getSalePriceTotal,
+  } = useCart();
 
   return (
     <Sheet>
@@ -62,7 +68,16 @@ export default function Cart() {
                       <div className="flex w-full flex-col gap-y-4">
                         <div className="flex flex-col gap-y-1">
                           <h1 className="text-xl font-medium">{plant.name}</h1>
-                          <p className="text-xl">${plant.price}</p>
+                          {plant.salePrice !== null ? (
+                            <p className="flex items-center gap-x-2 text-xl">
+                              <span>${plant.salePrice}</span>
+                              <span className="line-through opacity-60">
+                                ${plant.price}
+                              </span>
+                            </p>
+                          ) : (
+                            <p className="text-xl">${plant.price}</p>
+                          )}
                         </div>
 
                         <div className="flex flex-row justify-between">
@@ -101,7 +116,11 @@ export default function Cart() {
           <div className="mb-8 mt-4 w-full border-t border-accent/20">
             <div className="flex items-center justify-between text-lg font-semibold">
               <span>Total</span>
-              <span className="text-3xl">${getCartTotal().toFixed(2)}</span>
+              <span className="text-3xl">
+                {cart.salePrice !== null
+                  ? `${getSalePriceTotal().toFixed(2)}`
+                  : `${getCartTotal().toFixed(2)}`}
+              </span>
             </div>
             <button
               className="mt-4 w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
