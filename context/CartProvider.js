@@ -59,6 +59,13 @@ export function CartProvider({ children }) {
     });
   };
 
+  const getSalePriceTotal = () => {
+    return cart.reduce(
+      (total, item) => total + item.salePrice * item.quantity,
+      0,
+    );
+  };
+
   const getCartTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -76,6 +83,7 @@ export function CartProvider({ children }) {
         updateQuantity,
         getCartCount,
         getCartTotal,
+        getSalePriceTotal,
         confirmedOrders,
         confirmOrder,
       }}
