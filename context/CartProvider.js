@@ -59,15 +59,11 @@ export function CartProvider({ children }) {
     });
   };
 
-  const getSalePriceTotal = () => {
-    return cart.reduce(
-      (total, item) => total + item.salePrice * item.quantity,
-      0,
-    );
-  };
-
   const getCartTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => {
+      const price = item.salePrice !== null ? item.salePrice : item.price;
+      return total + price * item.quantity;
+    }, 0);
   };
 
   const getCartCount = () => {
@@ -83,7 +79,6 @@ export function CartProvider({ children }) {
         updateQuantity,
         getCartCount,
         getCartTotal,
-        getSalePriceTotal,
         confirmedOrders,
         confirmOrder,
       }}
