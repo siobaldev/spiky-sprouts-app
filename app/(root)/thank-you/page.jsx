@@ -5,9 +5,29 @@ import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
 import { getImageUrl } from "@/lib/utils";
 import { useFormData } from "@/context/FormDataProvider";
+import Link from "next/link";
 
 export default function ThankYou() {
   const { formData } = useFormData();
+
+  if (!formData) {
+    return (
+      <div className="container mx-auto flex h-[40rem] w-full flex-col items-center justify-center gap-y-4 px-6">
+        <h1 className="font-morangaBlack text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+          No Order Data found.
+        </h1>
+        <p className="text-center text-base lg:text-xl">
+          Please complete the checkout process.
+        </p>
+        <Link href="/">
+          <button className="group flex h-11 items-center gap-x-4 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] hover:border-hover hover:bg-hover xl:text-base">
+            Return to Home
+          </button>
+        </Link>
+      </div>
+    );
+  }
+
   const { confirmedOrders, getOrderTotal } = useCart();
 
   const discount = Number(formData.discount);
