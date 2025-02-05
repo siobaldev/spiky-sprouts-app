@@ -14,10 +14,13 @@ import { useFormData } from "@/context/FormDataProvider";
 export default function Checkout() {
   const { cart, getCartTotal, confirmOrder } = useCart();
   const { setFormData } = useFormData();
+  const [discount, setDiscount] = useState(0);
+  const [discountCode, setDiscountCode] = useState("");
+  const [discountedTotal, setDiscountedTotal] = useState(null);
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  const [paymentMethods, setPaymentMethods] = useState("credit");
+  const [paymentMethods, setPaymentMethods] = useState("");
   const [loadingStates, setLoadingStates] = useState({
     countries: false,
     states: false,
@@ -33,11 +36,14 @@ export default function Checkout() {
   const handlePaymentMethod = (method) => {
     setValue("paymentMethod", method);
     setPaymentMethods(method);
-
     const paymentStatus =
       method === "credit" || method === "paypal" ? "Paid" : "Cash on Delivery";
     setValue("paymentStatus", paymentStatus);
   };
+
+  useEffect(() => {
+    handlePaymentMethod("credit");
+  }, []);
 
   const getCheckoutSchema = (paymentMethod) => {
     const baseSchema = {
@@ -92,6 +98,8 @@ export default function Checkout() {
         .max(100, "Address must be less than 100 characters"),
       paymentMethod: z.string(),
       paymentStatus: z.string(),
+      discount: z.string(),
+      shippingFee: z.string(),
     };
 
     if (paymentMethod === "credit") {
@@ -99,11 +107,14 @@ export default function Checkout() {
         ...baseSchema,
         cardNumber: z
           .string()
-          .regex(/^\d{16}$/, "Card number must be 16 digits"),
+          .regex(
+            /(?<!\d)\d{16}(?!\d)|(?<!\d[ _-])(?<!\d)\d{4}(?:[_ -]\d{4}){3}(?![_ -]?\d)/,
+            "Card number must be 16 digits",
+          ),
         expiryDate: z
           .string()
           .regex(
-            /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
+            /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/,
             "Expiry date must be in MM/YY format",
           ),
         cvv: z.string().regex(/^\d{3,4}$/, "CVV must be 3 or 4 digits"),
@@ -127,6 +138,32 @@ export default function Checkout() {
     confirmOrder();
 
     router.push("/thank-you?");
+  };
+  const shippingFee = 30;
+  const subtotals = getCartTotal();
+  const total = subtotals + shippingFee;
+
+  const validateDiscount = (code) => {
+    const checkDiscount = {
+      SAVE5: 0.05,
+      SAVE10: 0.1,
+    };
+
+    return checkDiscount[code] || null;
+  };
+
+  const handleApplyDiscount = (subtotals, discountCode) => {
+    if (!subtotals) return;
+
+    const discountValue = validateDiscount(discountCode);
+    if (discountValue !== null) {
+      const discountAmount = subtotals * discountValue;
+      const discountedTotal = subtotals - discountAmount;
+      const totalShippingFee = discountedTotal + shippingFee;
+      setDiscount(discountAmount.toFixed(2));
+      setValue("discount", discountAmount.toFixed(2));
+      setDiscountedTotal(totalShippingFee);
+    }
   };
 
   const apiKey = process.env.NEXT_PUBLIC_COUNTRY_STATE_CITY_API;
@@ -444,7 +481,7 @@ export default function Checkout() {
                     Select payment method
                   </label>
                   <RadioGroup
-                    defaultValue={paymentMethods}
+                    defaultValue={"credit"}
                     onValueChange={handlePaymentMethod}
                     name="paymentMethod"
                     className="flex flex-col gap-y-8"
@@ -456,7 +493,6 @@ export default function Checkout() {
                           id="credit"
                           value="credit"
                           name="paymentMethod"
-                          // onClick={() => handlePaymentMethod("credit")}
                           className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "credit" ? "border border-button" : ""}`}
                         />
                         <label
@@ -533,7 +569,6 @@ export default function Checkout() {
                         id="paypal"
                         value="paypal"
                         name="paymentMethod"
-                        // onClick={() => handlePaymentMethod("paypal")}
                         className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "paypal" ? "border border-button" : ""}`}
                       />
                       <label
@@ -549,7 +584,6 @@ export default function Checkout() {
                         id="cash"
                         value="cash"
                         name="paymentMethod"
-                        // onClick={() => handlePaymentMethod("cash")}
                         className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "cash" ? "border border-button" : ""}`}
                       />
                       <label
@@ -560,10 +594,7 @@ export default function Checkout() {
                       </label>
                     </div>
                   </RadioGroup>
-                  <input
-                    type="hidden" // Make the input hidden
-                    {...register("paymentStatus")} // Register the field
-                  />
+                  <input type="hidden" {...register("paymentStatus")} />
                 </div>
               </div>
             </div>
@@ -578,7 +609,7 @@ export default function Checkout() {
                 {cart.length > 0 ? (
                   cart.map((item) => (
                     <div key={item.id} className="flex justify-between">
-                      <div className="flex gap-x-2">
+                      <div className="flex gap-x-4">
                         <Image
                           src={getImageUrl(item.image)}
                           height={100}
@@ -591,9 +622,17 @@ export default function Checkout() {
                           <span>x{item.quantity}</span>
                         </div>
                       </div>
-                      <span className="text-sm md:text-base lg:text-lg xl:text-xl">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </span>
+                      <div>
+                        {item.salePrice !== null ? (
+                          <p className="text-xl">
+                            ${(item.salePrice * item.quantity).toFixed(2)}
+                          </p>
+                        ) : (
+                          <p className="text-xl">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   ))
                 ) : (
@@ -606,17 +645,28 @@ export default function Checkout() {
                   <div className="flex flex-col gap-y-1">
                     <label
                       htmlFor="discount"
-                      className="text-sm md:text-base lg:text-lg xl:text-xl"
+                      className="flex items-center justify-between text-sm md:text-base lg:text-lg xl:text-xl"
                     >
-                      Discount Code
+                      <span>Discount Code</span>
+                      <span className="text-sm opacity-60">
+                        // SAVE5 or SAVE10
+                      </span>
                     </label>
                     <div className="flex gap-x-2">
                       <input
                         className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                         type="text"
                         id="discount"
+                        value={discountCode}
+                        onChange={(e) => setDiscountCode(e.target.value)}
                       />
-                      <button className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleApplyDiscount(subtotals, discountCode);
+                        }}
+                        className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
+                      >
                         Apply
                       </button>
                     </div>
@@ -631,19 +681,31 @@ export default function Checkout() {
                 <div className="border-t-2 border-dashed border-white/40 pt-4">
                   <div className="mb-2 flex justify-between text-sm md:text-base lg:text-lg xl:text-xl">
                     <span>Subtotal</span>
-                    <span>${getCartTotal().toFixed(2)}</span>
+                    <span>${subtotals}</span>
                   </div>
                   <div className="mb-2 flex justify-between text-sm md:text-base lg:text-lg xl:text-xl">
-                    <span>Shipping Fee</span>
-                    <span>$0</span>
+                    <span>Shipping Fee (Standard)</span>
+                    <input
+                      type="hidden"
+                      value={shippingFee}
+                      {...register("shippingFee")}
+                    />
+                    <span>${shippingFee}</span>
                   </div>
                   <div className="mb-2 flex justify-between text-sm md:text-base lg:text-lg xl:text-xl">
                     <span>Discount</span>
-                    <span>-$0</span>
+                    <input
+                      type="hidden"
+                      name="discount"
+                      {...register("discount")}
+                    />
+                    <span>${discount}</span>
                   </div>
                   <div className="mb-4 mt-6 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
                     <span>Total</span>
-                    <span>${getCartTotal().toFixed(2)}</span>
+                    <span>
+                      ${discountedTotal !== null ? discountedTotal : total}
+                    </span>
                   </div>
                   <button
                     type="submit"

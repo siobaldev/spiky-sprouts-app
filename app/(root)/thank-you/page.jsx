@@ -8,17 +8,13 @@ import { useFormData } from "@/context/FormDataProvider";
 
 export default function ThankYou() {
   const { formData } = useFormData();
-  const { confirmedOrders } = useCart();
+  const { confirmedOrders, getOrderTotal } = useCart();
 
-  const discount = 10;
-  const shippingFee = 50;
+  const discount = Number(formData.discount);
+  const shippingFee = Number(formData.shippingFee);
 
-  const subtotals = confirmedOrders.map((item) => item.price * item.quantity);
-  const sumOfSubtotals = subtotals.reduce(
-    (total, subtotal) => total + subtotal,
-    0,
-  );
-  const totalAfterDiscount = sumOfSubtotals - discount;
+  const subtotals = getOrderTotal();
+  const totalAfterDiscount = subtotals - discount;
   const total = totalAfterDiscount + shippingFee;
 
   return (
@@ -76,13 +72,14 @@ export default function ThankYou() {
             <p>{`${formData.city}, ${formData.state}, ${formData.country}, ${formData.zipCode}`}</p>
           </div>
           <hr className="rounded-full border-button" />
-          <div className="py-4 text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
-            <div className="flex items-center justify-between">
-              <h3>Payment Method</h3>
+          <div className="py-4 text-sm md:text-base lg:text-lg xl:text-xl">
+            <h3 className="mb-4">Payment</h3>
+            <div className="flex items-center justify-between opacity-60">
+              <h3>Method</h3>
               <p className="text-md uppercase">{formData.paymentMethod}</p>
             </div>
-            <div className="flex items-center justify-between">
-              <h4>Payment Status</h4>
+            <div className="flex items-center justify-between opacity-60">
+              <h4>Status</h4>
               <p className="text-md uppercase">{formData.paymentStatus}</p>
             </div>
           </div>
@@ -91,15 +88,15 @@ export default function ThankYou() {
           <div className="flex flex-col gap-y-2 text-sm md:text-base lg:text-lg xl:text-xl">
             <p className="inline-flex justify-between">
               <span>Subtotal</span>
-              <span>${sumOfSubtotals}</span>
+              <span>${subtotals}</span>
+            </p>
+            <p className="inline-flex justify-between">
+              <span>Shipping Fee(Standard)</span>
+              <span>${shippingFee}</span>
             </p>
             <p className="inline-flex justify-between">
               <span>Discount</span>
-              <span>-${discount}</span>
-            </p>
-            <p className="inline-flex justify-between">
-              <span>Shipping Fee</span>
-              <span>${shippingFee}</span>
+              <span>${discount}</span>
             </p>
             <p className="mt-2 inline-flex items-center justify-between border-t border-button pt-4">
               <span>Total</span>
