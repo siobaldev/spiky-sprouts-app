@@ -59,6 +59,13 @@ export function CartProvider({ children }) {
     });
   };
 
+  const getOrderTotal = () => {
+    return confirmedOrders.reduce((total, item) => {
+      const price = item.salePrice !== null ? item.salePrice : item.price;
+      return total + price * item.quantity;
+    }, 0);
+  };
+
   const getCartTotal = () => {
     return cart.reduce((total, item) => {
       const price = item.salePrice !== null ? item.salePrice : item.price;
@@ -79,6 +86,7 @@ export function CartProvider({ children }) {
         updateQuantity,
         getCartCount,
         getCartTotal,
+        getOrderTotal,
         confirmedOrders,
         confirmOrder,
       }}
