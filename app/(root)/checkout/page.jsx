@@ -239,7 +239,7 @@ export default function Checkout() {
 
   const handleCountryChange = (e) => {
     const selectedValue = Array.from(e.target.list.options).find(
-      (country) => country.value === e.target.value,
+      (country) => country.value.toLowerCase() === e.target.value.toLowerCase(),
     );
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
@@ -250,7 +250,7 @@ export default function Checkout() {
 
   const handleStateChange = (e) => {
     const selectedValue = Array.from(e.target.list.options).find(
-      (state) => state.value === e.target.value,
+      (state) => state.value.toLowerCase() === e.target.value.toLowerCase(),
     );
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
