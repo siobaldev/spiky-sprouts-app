@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
 import { getImageUrl } from "@/lib/utils";
@@ -29,21 +29,29 @@ export default function Checkout() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const router = useRouter();
 
-  const updateLoadingState = (key, isLoading) => {
-    setLoadingStates((prev) => ({ ...prev, [key]: isLoading }));
-  };
+  const updateLoadingState = useCallback(
+    (key, isLoading) => {
+      setLoadingStates((prev) => ({ ...prev, [key]: isLoading }));
+    },
+    [setLoadingStates],
+  );
 
-  const handlePaymentMethod = (method) => {
-    setValue("paymentMethod", method);
-    setPaymentMethods(method);
-    const paymentStatus =
-      method === "credit" || method === "paypal" ? "Paid" : "Cash on Delivery";
-    setValue("paymentStatus", paymentStatus);
-  };
+  const handlePaymentMethod = useCallback(
+    (method) => {
+      setValue("paymentMethod", method);
+      setPaymentMethods(method);
+      const paymentStatus =
+        method === "credit" || method === "paypal"
+          ? "Paid"
+          : "Cash on Delivery";
+      setValue("paymentStatus", paymentStatus);
+    },
+    [ setPaymentMethods],
+  );
 
   useEffect(() => {
     handlePaymentMethod("credit");
-  }, []);
+  }, [handlePaymentMethod]);
 
   const getCheckoutSchema = (paymentMethod) => {
     const baseSchema = {
@@ -133,12 +141,7 @@ export default function Checkout() {
     resolver: zodResolver(getCheckoutSchema(paymentMethods)),
   });
 
-  const onSubmit = (userData) => {
-    setFormData(userData);
-    confirmOrder();
 
-    router.push("/thank-you?");
-  };
   const shippingFee = 30;
   const subtotals = getCartTotal();
   const total = subtotals + shippingFee;
@@ -168,7 +171,7 @@ export default function Checkout() {
 
   const apiKey = process.env.NEXT_PUBLIC_COUNTRY_STATE_CITY_API;
 
-  const fetchCountries = async () => {
+  const fetchCountries = useCallback(async () => {
     updateLoadingState("countries", true);
     try {
       const response = await fetch(
@@ -187,11 +190,11 @@ export default function Checkout() {
     } finally {
       updateLoadingState("countries", false);
     }
-  };
+  }, [apiKey, updateLoadingState, setCountries]);
 
   useEffect(() => {
     fetchCountries();
-  }, []);
+  }, [fetchCountries]);
 
   const fetchStates = async (ciso) => {
     if (!ciso) return;
@@ -258,6 +261,13 @@ export default function Checkout() {
     }
   };
 
+  const onSubmit = (userData) => {
+    setFormData(userData);
+    confirmOrder();
+
+    router.push("/thank-you?");
+  };
+
   return (
     <div className="container mx-auto max-w-[1280px] px-8 pb-16 pt-20 md:px-16 md:pb-[5rem] md:pt-[7rem] lg:pb-[7rem] lg:pt-[11rem]">
       <form action="" onSubmit={handleSubmit(onSubmit)}>
@@ -282,7 +292,6 @@ export default function Checkout() {
                     type="text"
                     id="fullName"
                     name="fullName"
-                    value="Minard Siobal"
                   />
                   {errors.fullName && (
                     <p className="mt-1 text-sm text-red-500">
@@ -303,7 +312,6 @@ export default function Checkout() {
                     type="text"
                     id="email"
                     name="email"
-                    value="mnrdzxc@gmail.com"
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500">
@@ -324,7 +332,6 @@ export default function Checkout() {
                     type="text"
                     id="phone"
                     name="phone"
-                    value="09666826008"
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-500">
@@ -440,7 +447,6 @@ export default function Checkout() {
                     type="text"
                     id="zipCode"
                     name="zipCode"
-                    value="6500"
                   />
                   {errors.zipCode && (
                     <p className="text-sm text-red-500">
@@ -461,7 +467,6 @@ export default function Checkout() {
                     type="text"
                     id="street"
                     name="street"
-                    value="Brgy 92 apitong"
                   />
                   {errors.street && (
                     <p className="text-sm text-red-500">
@@ -649,7 +654,7 @@ export default function Checkout() {
                     >
                       <span>Discount Code</span>
                       <span className="text-sm opacity-60">
-                        // SAVE5 or SAVE10
+                        SAVE5 or SAVE10
                       </span>
                     </label>
                     <div className="flex gap-x-2">

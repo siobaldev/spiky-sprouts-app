@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function ThankYou() {
   const { formData } = useFormData();
+  const { confirmedOrders, getOrderTotal } = useCart();
 
   if (!formData) {
     return (
@@ -27,9 +28,6 @@ export default function ThankYou() {
       </div>
     );
   }
-
-  const { confirmedOrders, getOrderTotal } = useCart();
-
   const discount = Number(formData.discount);
   const shippingFee = Number(formData.shippingFee);
 
@@ -47,7 +45,7 @@ export default function ThankYou() {
           Your plant is on the way!
         </p>
         <p className="mb-16 text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
-          We've received your order and are now processing it.
+          We&apos;ve received your order and are now processing it.
         </p>
         <p className="flex flex-col text-sm md:text-base lg:text-lg xl:text-xl">
           <span className="mb-2">Order Number</span>

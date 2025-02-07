@@ -97,6 +97,7 @@ export default function ShopByCategory({ params }) {
           </button>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button
+              key={page}
               onClick={() => setCurrentPage(page)}
               className={`rounded-lg px-4 py-2 ${currentPage === page ? "border-0 bg-button/10" : ""}`}
             >

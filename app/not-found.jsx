@@ -29,7 +29,8 @@ export default function NotFound() {
         404 - {title} Not Found
       </h1>
       <p className="text-center text-base lg:text-xl">
-        Oops! The {title.toLowerCase()} you're looking for doesn't exist.
+        Oops! The {title.toLowerCase()} you&apos;re looking for doesn&apos;t
+        exist.
       </p>
       <Link href={linkHref}>
         <button className="group flex h-11 items-center gap-x-4 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] hover:border-hover hover:bg-hover xl:text-base">
