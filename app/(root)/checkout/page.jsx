@@ -137,10 +137,6 @@ export default function Checkout() {
     return checkDiscount[code] || null;
   };
 
-  useEffect(() => {
-    handlePaymentMethod("credit");
-  }, [handlePaymentMethod]);
-
   const handlePaymentMethod = useCallback(
     (method) => {
       setValue("paymentMethod", method);
@@ -153,6 +149,10 @@ export default function Checkout() {
     },
     [setValue, setPaymentMethods],
   );
+
+  useEffect(() => {
+    handlePaymentMethod("credit");
+  }, [handlePaymentMethod]);
 
   const handleApplyDiscount = (subtotals, discountCode) => {
     if (!subtotals) return;
@@ -669,7 +669,8 @@ export default function Checkout() {
                         onClick={() => {
                           handleApplyDiscount(subtotals, discountCode);
                         }}
-                        className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
+                        disabled={cart.length > 0 ? false : true}
+                        className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button md:py-2 md:text-base"
                       >
                         Apply
                       </button>
