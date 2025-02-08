@@ -3,9 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
-import Favorite from "@/components/ui/favorite/page";
+import Favorite from "@/components/ui/favorite";
 import ClientWrapper from "@/context/ClientWrapper";
-import AddToCartButton from "../addToCart/page";
+import AddToCartButton from "./addToCart";
 
 const Page = ({ name, imageName, rate, reviews, salePrice, price, plant }) => {
   return (

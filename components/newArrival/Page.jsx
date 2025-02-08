@@ -1,6 +1,6 @@
 import React from "react";
 import { plants } from "@/lib/data";
-import Card from "@/components/ui/card/Page";
+import Card from "@/components/ui/favorite";
 import Link from "next/link";
 
 export default function NewArrival() {

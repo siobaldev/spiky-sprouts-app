@@ -11,7 +11,7 @@ import {
   SheetFooter,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet/page";
+} from "@/components/ui/sheet";
 
 export default function Cart() {
   const router = useRouter();

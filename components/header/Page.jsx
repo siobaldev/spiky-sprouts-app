@@ -5,7 +5,7 @@ import MobileNav from "@/components/nav/MobileNav";
 import { NavItems } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
-import SearchBar from "../ui/searchBar/page";
+import SearchBar from "@/components/ui/searchBar";
 import Cart from "../cart/page";
 import "@/app/globals.css";
 

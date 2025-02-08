@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { NavItems, FacebookIcon, TwitterIcon, InstagramIcon } from "@/lib/data";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuSlide } from "@/lib/utils";
-import SearchBar from "../ui/searchBar/page";
+import SearchBar from "@/components/ui/searchBar";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);

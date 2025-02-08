@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from "react";
 import { plants } from "@/lib/data";
 import Link from "next/link";
-import Card from "@/components/ui/card/Page";
+import Card from "@/components/ui/favorite";
 import { notFound } from "next/navigation";
 
 export default function ShopByCategory({ params }) {
