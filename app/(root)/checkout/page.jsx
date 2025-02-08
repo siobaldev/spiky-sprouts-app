@@ -277,8 +277,8 @@ export default function Checkout() {
                 Delivery Information
               </h1>
 
-              <div className="grid gap-4 rounded-lg bg-button/10 p-8 md:grid-cols-2">
-                <div className="col-span-2 flex flex-col gap-y-1">
+              <div className="grid grid-cols-1 gap-4 rounded-lg bg-button/10 p-8 md:grid-cols-2">
+                <div className="flex flex-col gap-y-1 md:col-span-2">
                   <label
                     className="text-sm md:text-base lg:text-lg xl:text-xl"
                     htmlFor="fullName"
