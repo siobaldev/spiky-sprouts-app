@@ -36,23 +36,6 @@ export default function Checkout() {
     [setLoadingStates],
   );
 
-  const handlePaymentMethod = useCallback(
-    (method) => {
-      setValue("paymentMethod", method);
-      setPaymentMethods(method);
-      const paymentStatus =
-        method === "credit" || method === "paypal"
-          ? "Paid"
-          : "Cash on Delivery";
-      setValue("paymentStatus", paymentStatus);
-    },
-    [ setPaymentMethods],
-  );
-
-  useEffect(() => {
-    handlePaymentMethod("credit");
-  }, [handlePaymentMethod]);
-
   const getCheckoutSchema = (paymentMethod) => {
     const baseSchema = {
       fullName: z.string().min(3, "Full name must be at least 3 characters"),
@@ -141,7 +124,6 @@ export default function Checkout() {
     resolver: zodResolver(getCheckoutSchema(paymentMethods)),
   });
 
-
   const shippingFee = 30;
   const subtotals = getCartTotal();
   const total = subtotals + shippingFee;
@@ -154,6 +136,23 @@ export default function Checkout() {
 
     return checkDiscount[code] || null;
   };
+
+  useEffect(() => {
+    handlePaymentMethod("credit");
+  }, [handlePaymentMethod]);
+
+  const handlePaymentMethod = useCallback(
+    (method) => {
+      setValue("paymentMethod", method);
+      setPaymentMethods(method);
+      const paymentStatus =
+        method === "credit" || method === "paypal"
+          ? "Paid"
+          : "Cash on Delivery";
+      setValue("paymentStatus", paymentStatus);
+    },
+    [setValue, setPaymentMethods],
+  );
 
   const handleApplyDiscount = (subtotals, discountCode) => {
     if (!subtotals) return;
