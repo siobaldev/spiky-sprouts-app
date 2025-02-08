@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { plants } from "@/lib/data";
 import Link from "next/link";
-import Card from "@/components/ui/favorite";
+import Card from "@/components/ui/card";
 import { notFound } from "next/navigation";
 
 export default function ShopByCategory({ params }) {
