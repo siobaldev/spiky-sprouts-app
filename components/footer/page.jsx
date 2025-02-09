@@ -19,7 +19,7 @@ export default function Footer() {
                 <Link href="/">
                   <Image
                     className="w-[6rem] lg:w-[8rem]"
-                    src="/assets/logo.svg"
+                    src="/assets/Logo.svg"
                     alt="logo-icon"
                     width={80}
                     height={30}
