@@ -41,7 +41,7 @@ export default function Header() {
           <Link href="/">
             <Image
               className="-z-20 md:w-20 lg:w-28"
-              src="/assets/logo.svg"
+              src="/assets/Logo.svg"
               alt="Spiky-Sprouts-Logo"
               width={70}
               height={30}
