@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
@@ -14,13 +14,21 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Cart() {
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
 
+  const handleCheckout = () => {
+    setOpen(false);
+    if (cart.length > 0) {
+      router.push("/checkout");
+    }
+  };
+
   return (
-    <Sheet>
-      <SheetTrigger>
-        <div className="relative">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <button onClick={() => setOpen(true)} className="relative">
           <Image
             className="size-6 opacity-60 sm:size-7 lg:size-8"
             src="/assets/Cart.svg"
@@ -34,7 +42,7 @@ export default function Cart() {
               {cart.length}
             </span>
           )}
-        </div>
+        </button>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-between gap-y-4 overflow-y-auto border-l border-accent/20 bg-primary p-6">
         <SheetHeader>
@@ -113,8 +121,9 @@ export default function Cart() {
               <span className="text-3xl">${getCartTotal().toFixed(2)}</span>
             </div>
             <button
-              className="mt-4 w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base"
-              onClick={() => router.push("/checkout")}
+              className="mt-4 w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button md:py-2 md:text-base"
+              onClick={handleCheckout}
+              disabled={cart.length > 0 ? false : true}
             >
               Checkout
             </button>
