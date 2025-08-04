@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
 import { getImageUrl } from "@/lib/utils";
@@ -28,6 +28,7 @@ export default function Checkout() {
   });
   const [selectedCountry, setSelectedCountry] = useState("");
   const router = useRouter();
+  const initializedRef = useRef(false);
 
   const updateLoadingState = useCallback(
     (key, isLoading) => {
@@ -119,6 +120,7 @@ export default function Checkout() {
     register,
     handleSubmit,
     setValue,
+    resetField,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(getCheckoutSchema(paymentMethods)),
@@ -168,19 +170,14 @@ export default function Checkout() {
     }
   };
 
-  const apiKey = process.env.NEXT_PUBLIC_COUNTRY_STATE_CITY_API;
-
   const fetchCountries = useCallback(async () => {
     updateLoadingState("countries", true);
     try {
-      const response = await fetch(
-        "https://api.countrystatecity.in/v1/countries",
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        },
-      );
+      const response = await fetch("/api/country");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
       setCountries(data);
@@ -189,25 +186,26 @@ export default function Checkout() {
     } finally {
       updateLoadingState("countries", false);
     }
-  }, [apiKey, updateLoadingState, setCountries]);
+  }, [updateLoadingState, setCountries]);
 
   useEffect(() => {
-    fetchCountries();
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      fetchCountries();
+    }
   }, [fetchCountries]);
 
-  const fetchStates = async (ciso) => {
-    if (!ciso) return;
+  const fetchStates = async (countryCode) => {
+    if (!countryCode) return;
 
     updateLoadingState("states", true);
     try {
-      const response = await fetch(
-        `https://api.countrystatecity.in/v1/countries/${ciso}/states`,
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        },
-      );
+      const response = await fetch(`/api/state/${countryCode}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       setStates(data);
     } catch (error) {
@@ -217,19 +215,17 @@ export default function Checkout() {
     }
   };
 
-  const fetchCities = async (ciso, siso) => {
-    if (!ciso || !siso) return;
+  const fetchCities = async (countryCode, stateCode) => {
+    if (!countryCode || !stateCode) return;
 
     updateLoadingState("cities", true);
     try {
-      const response = await fetch(
-        `https://api.countrystatecity.in/v1/countries/${ciso}/states/${siso}/cities`,
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        },
-      );
+      const response = await fetch(`/api/city/${countryCode}/${stateCode}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       setCities(data);
     } catch (error) {
@@ -246,6 +242,14 @@ export default function Checkout() {
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
       setSelectedCountry(iso2);
+      if (states.length > 0) {
+        setStates([]);
+        resetField("state");
+      }
+      if (cities.length > 0) {
+        setCities([]);
+        resetField("city");
+      }
       fetchStates(iso2);
     }
   };
@@ -256,6 +260,11 @@ export default function Checkout() {
     );
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
+      if (cities.length > 0) {
+        setCities([]);
+        resetField("city");
+      }
+
       fetchCities(selectedCountry, iso2);
     }
   };
