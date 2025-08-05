@@ -671,7 +671,9 @@ export default function Checkout() {
                         type="text"
                         id="discount"
                         value={discountCode}
-                        onChange={(e) => setDiscountCode(e.target.value)}
+                        onChange={(e) =>
+                          setDiscountCode(e.target.value.toUpperCase())
+                        }
                       />
                       <button
                         type="button"
@@ -713,7 +715,7 @@ export default function Checkout() {
                       name="discount"
                       {...register("discount")}
                     />
-                    <span>${discount}</span>
+                    <span>-${discount}</span>
                   </div>
                   <div className="mb-4 mt-6 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
                     <span>Total</span>
