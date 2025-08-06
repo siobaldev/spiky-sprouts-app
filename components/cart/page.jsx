@@ -16,7 +16,8 @@ import {
 export default function Cart() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const { cart, getCartCount, removeFromCart, updateQuantity, getCartTotal } =
+    useCart();
 
   const handleCheckout = () => {
     setOpen(false);
@@ -24,6 +25,8 @@ export default function Cart() {
       router.push("/checkout");
     }
   };
+
+  const cartTotal = getCartCount();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -39,7 +42,7 @@ export default function Cart() {
 
           {cart.length > 0 && (
             <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-button text-sm text-white before:absolute before:-z-10 before:size-6 before:animate-ping before:rounded-full before:bg-button/80">
-              {cart.length}
+              {cartTotal}
             </span>
           )}
         </button>
