@@ -121,6 +121,7 @@ export default function Checkout() {
     handleSubmit,
     setValue,
     resetField,
+    trigger,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(getCheckoutSchema(paymentMethods)),
@@ -239,6 +240,10 @@ export default function Checkout() {
     const selectedValue = Array.from(e.target.list.options).find(
       (country) => country.value.toLowerCase() === e.target.value.toLowerCase(),
     );
+
+    const value = e.target.value;
+    setValue("country", value, { shouldValidate: true });
+
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
       setSelectedCountry(iso2);
@@ -252,12 +257,18 @@ export default function Checkout() {
       }
       fetchStates(iso2);
     }
+
+    trigger("country");
   };
 
   const handleStateChange = (e) => {
     const selectedValue = Array.from(e.target.list.options).find(
       (state) => state.value.toLowerCase() === e.target.value.toLowerCase(),
     );
+
+    const value = e.target.value;
+    setValue("state", value, { shouldValidate: true });
+
     if (selectedValue) {
       const iso2 = selectedValue.getAttribute("data-iso2");
       if (cities.length > 0) {
@@ -267,6 +278,8 @@ export default function Checkout() {
 
       fetchCities(selectedCountry, iso2);
     }
+
+    trigger("state");
   };
 
   const onSubmit = (userData) => {
@@ -428,6 +441,9 @@ export default function Checkout() {
                     id="city"
                     list="cities"
                     name="city"
+                    onChange={(e) =>
+                      setValue("city", e.target.value, { shouldValidate: true })
+                    }
                     placeholder={loadingStates.cities ? "Loading..." : ""}
                   />
                   <datalist id="cities">
