@@ -122,6 +122,7 @@ export default function Checkout() {
     setValue,
     resetField,
     trigger,
+    clearErrors,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(getCheckoutSchema(paymentMethods)),
@@ -142,15 +143,22 @@ export default function Checkout() {
 
   const handlePaymentMethod = useCallback(
     (method) => {
-      setValue("paymentMethod", method);
+      setValue("paymentMethod", method, { shouldValidate: true });
       setPaymentMethods(method);
       const paymentStatus =
         method === "credit" || method === "paypal"
           ? "Paid"
           : "Cash on Delivery";
       setValue("paymentStatus", paymentStatus);
+      trigger("paymentMethod");
+      if (method !== "credit") {
+        setValue("cardNumber", "");
+        setValue("expiryDate", "");
+        setValue("cvv", "");
+        clearErrors(["cardNumber", "expiryDate", "cvv"]);
+      }
     },
-    [setValue, setPaymentMethods],
+    [setValue, setPaymentMethods, clearErrors, trigger],
   );
 
   useEffect(() => {
