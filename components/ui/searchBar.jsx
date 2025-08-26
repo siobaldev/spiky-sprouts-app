@@ -3,7 +3,7 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Search } from "lucide-react";
 import dynamic from "next/dynamic";
 
-const LazySearchDialogContent = dynamic(() => import("./SearchDialogContent"), {
+const LazySearchDialogContent = dynamic(() => import("./searchDialogContent"), {
   ssr: false,
 });
 
@@ -11,7 +11,7 @@ export default function SearchBar() {
   const [open, setOpen] = useState(false);
 
   const prefetchDialog = () => {
-    import("./SearchDialogContent");
+    import("./searchDialogContent");
   };
 
   return (
