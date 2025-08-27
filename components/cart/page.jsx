@@ -54,7 +54,9 @@ export default function Cart() {
         <div className="w-full">
           <div className="flex h-full flex-col">
             {cart.length === 0 ? (
-              <p>Your cart is empty</p>
+              <p className="text-center font-morangaRegular text-[4rem]">
+                Your cart is empty
+              </p>
             ) : (
               <>
                 <div className="flex flex-col gap-y-4">
