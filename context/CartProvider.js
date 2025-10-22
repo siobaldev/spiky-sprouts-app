@@ -1,12 +1,27 @@
 "use client";
 
-import { useState, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
-  const [confirmedOrders, setConfirmedOrders] = useState(null);
+  const [setConfirmedOrders] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("cart");
+    if (saved) {
+      setCart(JSON.parse(saved));
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, isLoaded]);
 
   const addToCart = (plant) => {
     setCart((prevCart) => {
@@ -32,7 +47,7 @@ export function CartProvider({ children }) {
     });
   };
 
-  const confirmOrder = () => {
+  const confirmedOrders = () => {
     setConfirmedOrders([...cart]);
     setCart([]);
   };
@@ -87,8 +102,8 @@ export function CartProvider({ children }) {
         getCartCount,
         getCartTotal,
         getOrderTotal,
+        isLoaded,
         confirmedOrders,
-        confirmOrder,
       }}
     >
       {children}

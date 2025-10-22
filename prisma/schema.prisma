@@ -9,14 +9,14 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
   
-model Image {
+model Product {
   id          Int      @id @default(autoincrement())
   name        String
   image       String   // This will store the Supabase storage URL
   imagePath   String?  // Path in Supabase bucket (for deletion)
   rate        String   @default("0.0")
-  reviews     String   @default("(0)")
-  salePrice   Decimal  @db.Decimal(10, 2) // e.g., 9999999.99
+  reviews     Int      @default(0)
+  salePrice   Decimal?  @db.Decimal(10, 2) // e.g., 9999999.99
   price       Decimal  @db.Decimal(10, 2) // e.g., 9999999.99
   quantity    Int      @default(0)
   tag         String[] // Array of tags

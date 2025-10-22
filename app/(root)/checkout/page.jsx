@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
-import { getImageUrl } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -648,7 +647,7 @@ export default function Checkout() {
                     <div key={item.id} className="flex justify-between">
                       <div className="flex gap-x-4">
                         <Image
-                          src={getImageUrl(item.image)}
+                          src={item.image}
                           height={100}
                           width={100}
                           alt={item.name}

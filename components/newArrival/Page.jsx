@@ -1,11 +1,6 @@
-import React from "react";
-import { plants } from "@/lib/data";
-import Card from "@/components/ui/card";
-import Link from "next/link";
+import { GetNewArrivals } from "../ui/getNewArrivals";
 
 export default function NewArrival() {
-  const newPlants = plants.filter((plant) => plant.tag.includes("New"));
-
   return (
     <section
       id="newArrival"
@@ -21,22 +16,7 @@ export default function NewArrival() {
             atmosphere of harmony and freshness.
           </p>
         </div>
-        <div className="flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
-          {newPlants.map((plant) => (
-            <Link href={`/category/All/product/${plant.slug}`} key={plant.id}>
-              <Card
-                name={plant.name}
-                imageName={plant.image}
-                rate={plant.rate}
-                reviews={plant.reviews}
-                salePrice={plant.salePrice}
-                price={plant.price}
-                slug={plant.slug}
-                plant={plant}
-              />
-            </Link>
-          ))}
-        </div>
+        <GetNewArrivals />
       </div>
     </section>
   );

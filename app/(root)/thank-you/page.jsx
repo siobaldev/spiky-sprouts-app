@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
-import { getImageUrl } from "@/lib/utils";
 import { useFormData } from "@/context/FormDataProvider";
 import Link from "next/link";
 
@@ -59,7 +58,7 @@ export default function ThankYou() {
               className="relative flex h-[14rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[18rem] md:w-[12rem]"
             >
               <Image
-                src={getImageUrl(item.image)}
+                src={item.image}
                 height={100}
                 width={100}
                 alt={item.name}

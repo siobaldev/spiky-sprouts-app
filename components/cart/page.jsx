@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
-import { getImageUrl } from "@/lib/utils";
 import { Plus, Minus, Trash2 } from "lucide-react";
 import {
   Sheet,
@@ -16,8 +15,26 @@ import {
 export default function Cart() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { cart, getCartCount, removeFromCart, updateQuantity, getCartTotal } =
-    useCart();
+  const {
+    cart,
+    getCartCount,
+    removeFromCart,
+    updateQuantity,
+    getCartTotal,
+    isLoaded,
+  } = useCart();
+
+  if (!isLoaded) {
+    return (
+      <Image
+        className="size-6 opacity-60 sm:size-7 lg:size-8"
+        src="/assets/Cart.svg"
+        alt="cart"
+        width={30}
+        height={30}
+      />
+    );
+  }
 
   const handleCheckout = () => {
     setOpen(false);
@@ -67,8 +84,8 @@ export default function Cart() {
                     >
                       <Image
                         className="size-24"
-                        src={getImageUrl(plant.image)}
-                        alt={plant.image}
+                        src={plant.image}
+                        alt={plant.name}
                         width={100}
                         height={100}
                       />

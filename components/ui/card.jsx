@@ -2,12 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { getImageUrl } from "@/lib/utils";
 import Favorite from "@/components/ui/favorite";
 import ClientWrapper from "@/context/ClientWrapper";
 import AddToCartButton from "./addToCart";
 
-const Page = ({ name, imageName, rate, reviews, salePrice, price, plant }) => {
+const Page = ({ name, image, rate, reviews, salePrice, price, plant }) => {
   return (
     <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
       <Favorite />
@@ -15,7 +14,7 @@ const Page = ({ name, imageName, rate, reviews, salePrice, price, plant }) => {
       <ClientWrapper>
         <Image
           className="size-24 md:size-32"
-          src={getImageUrl(imageName)}
+          src={image}
           alt={name}
           width={90}
           height={90}
@@ -36,7 +35,7 @@ const Page = ({ name, imageName, rate, reviews, salePrice, price, plant }) => {
             height={14}
           />
           <p className="text-white/60">{rate}</p>
-          <p className="text-white/60">{reviews}</p>
+          <p className="text-white/60">({reviews})</p>
         </div>
         <div className="flex items-center gap-x-2 text-sm font-bold md:text-base">
           {salePrice ? (
