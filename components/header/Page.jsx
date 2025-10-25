@@ -26,13 +26,13 @@ export default function Header() {
   }, []);
   return (
     <header
-      className={`fixed top-0 z-50 flex h-[4rem] w-full items-center justify-center transition-all duration-300 md:h-[5rem] lg:h-[6rem] ${
+      className={`fixed top-0 z-50 flex h-16 w-full items-center justify-center transition-all duration-300 md:h-20 lg:h-24 ${
         !isSticking
           ? "bg-transparent"
-          : "bg-primary shadow-headerBottom backdrop-blur-[1rem]"
+          : "bg-primary shadow-header-bottom backdrop-blur-lg"
       }`}
     >
-      <div className="container z-0 mx-auto flex w-full max-w-[1280px] items-center justify-between px-8 md:px-16">
+      <div className="z-0 container mx-auto flex w-full max-w-7xl items-center justify-between px-8 md:px-16">
         <div className="lg:hidden">
           <MobileNav />
         </div>
@@ -55,7 +55,7 @@ export default function Header() {
             {NavItems.map((link) => (
               <li key={link.href} className="relative px-4 py-2">
                 <Link
-                  className="list-none underline-offset-8 transition hover:text-accent md:text-base"
+                  className="hover:text-accent list-none underline-offset-8 transition md:text-base"
                   href={link.href}
                 >
                   {link.title}

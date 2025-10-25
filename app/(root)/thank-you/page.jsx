@@ -12,7 +12,7 @@ export default function ThankYou() {
 
   if (!formData) {
     return (
-      <div className="container mx-auto flex h-[40rem] w-full flex-col items-center justify-center gap-y-4 px-6">
+      <div className="container mx-auto flex h-160 w-full flex-col items-center justify-center gap-y-4 px-6">
         <h1 className="font-morangaBlack text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
           No Order Data found.
         </h1>
@@ -20,7 +20,7 @@ export default function ThankYou() {
           Please complete the checkout process.
         </p>
         <Link href="/">
-          <button className="group flex h-11 items-center gap-x-4 rounded-md border-2 border-button bg-button px-5 text-sm font-bold uppercase text-white/[0.87] hover:border-hover hover:bg-hover xl:text-base">
+          <button className="group border-button bg-button hover:border-hover hover:bg-hover flex h-11 items-center gap-x-4 rounded-md border-2 px-5 text-sm font-bold text-white/[0.87] uppercase xl:text-base">
             Return to Home
           </button>
         </Link>
@@ -35,9 +35,9 @@ export default function ThankYou() {
   const total = totalAfterDiscount + shippingFee;
 
   return (
-    <div className="container mx-auto flex max-w-[1280px] flex-col gap-x-8 px-8 pb-16 pt-20 md:px-16 md:pb-[5rem] md:pt-[7rem] lg:flex-row lg:pb-[7rem] lg:pt-[11rem]">
+    <div className="container mx-auto flex max-w-7xl flex-col gap-x-8 px-8 pt-20 pb-16 md:px-16 md:pt-28 md:pb-20 lg:flex-row lg:pt-44 lg:pb-28">
       <div className="lg:w-[60%]">
-        <h1 className="font-morangaBlack text-sm text-accent md:text-base lg:text-lg xl:text-xl">
+        <h1 className="font-moranga-black text-accent text-sm md:text-base lg:text-lg xl:text-xl">
           Thank you!
         </h1>
         <p className="text-xl font-black opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
@@ -51,11 +51,11 @@ export default function ThankYou() {
           <span className="opacity-60">123sdfdfq234sdgqawh</span>
         </p>
 
-        <div className="mx-auto mb-16 mt-16 flex w-full max-w-[46rem] flex-wrap justify-center gap-x-4 gap-y-4">
+        <div className="mx-auto mt-16 mb-16 flex w-full max-w-184 flex-wrap justify-center gap-x-4 gap-y-4">
           {confirmedOrders.map((item) => (
             <div
               key={item.id}
-              className="relative flex h-[14rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[18rem] md:w-[12rem]"
+              className="shadow-itemCard relative flex h-56 w-36 flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/5 bg-white/2 md:h-72 md:w-48"
             >
               <Image
                 src={item.image}
@@ -78,7 +78,7 @@ export default function ThankYou() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-button/10 p-14 lg:w-[40%]">
+      <div className="bg-button/10 rounded-xl p-14 lg:w-[40%]">
         <div>
           <h2 className="mb-4 text-sm md:text-base lg:text-lg xl:text-xl">
             Shipping Address
@@ -88,7 +88,7 @@ export default function ThankYou() {
             <p>{formData.street}</p>
             <p>{`${formData.city}, ${formData.state}, ${formData.country}, ${formData.zipCode}`}</p>
           </div>
-          <hr className="rounded-full border-button" />
+          <hr className="border-button rounded-full" />
           <div className="py-4 text-sm md:text-base lg:text-lg xl:text-xl">
             <h3 className="mb-4">Payment</h3>
             <div className="flex items-center justify-between opacity-60">
@@ -101,7 +101,7 @@ export default function ThankYou() {
             </div>
           </div>
 
-          <hr className="mb-4 rounded-full border-button" />
+          <hr className="border-button mb-4 rounded-full" />
           <div className="flex flex-col gap-y-2 text-sm md:text-base lg:text-lg xl:text-xl">
             <p className="inline-flex justify-between">
               <span>Subtotal</span>
@@ -115,7 +115,7 @@ export default function ThankYou() {
               <span>Discount</span>
               <span>${discount}</span>
             </p>
-            <p className="mt-2 inline-flex items-center justify-between border-t border-button pt-4">
+            <p className="border-button mt-2 inline-flex items-center justify-between border-t pt-4">
               <span>Total</span>
               <span className="text-4xl font-bold">${total}</span>
             </p>

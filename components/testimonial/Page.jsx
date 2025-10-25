@@ -3,19 +3,18 @@ import Image from "next/image";
 
 export default function Testimonial() {
   return (
-    <section className="mb-28 bg-button/10 px-6 sm:px-10 md:px-14 lg:mb-40">
+    <section className="bg-button/10 mb-28 px-6 sm:px-10 md:px-14 lg:mb-40">
       <div className="grid grid-cols-2 place-items-center gap-y-4 p-7 max-[420px]:grid-cols-1 md:grid-cols-3 md:grid-rows-1 md:gap-8 lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-x-16 xl:gap-x-20">
-        <h1 className="col-span-full text-center font-morangaRegular text-xl opacity-87 md:order-2 md:col-span-1 md:text-left md:text-2xl lg:text-3xl">
+        <h1 className="font-morangaRegular col-span-full text-center text-xl opacity-87 md:order-2 md:col-span-1 md:text-left md:text-2xl lg:text-3xl">
           Trusted by Over <br /> 5,000 Businesses <br /> Since 2019
         </h1>
         <div className="md:order-1">
           <Image
-            className="lg:drop-shadow-lgv min-w-44 drop-shadow-sm max-[420px]:min-w-32 sm:w-[14rem] md:w-[15rem]"
-            src="/assets/Contact-Cactus.webp"
+            className="lg:drop-shadow-lgv min-w-44 drop-shadow-sm max-[420px]:min-w-32 sm:w-56 md:w-60"
+            src="https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Contact-Cactus.webp"
             alt="home-cactus"
             width={100}
             height={100}
-            quality={100}
             unoptimized={true}
           />
         </div>

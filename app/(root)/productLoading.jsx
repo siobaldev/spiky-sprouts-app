@@ -12,11 +12,11 @@ export default function ProductLoading() {
       </div>
       <div className="flex flex-col gap-y-10 md:gap-y-14 lg:gap-y-16 xl:gap-y-20">
         <div className="max-w-7xl">
-          <div className="flex h-[32rem] w-full flex-col gap-8 rounded-3xl bg-button/10 p-6 sm:p-8 md:p-12 lg:flex-row lg:gap-12 lg:p-16" />
+          <div className="bg-button/10 flex h-128 w-full flex-col gap-8 rounded-3xl p-6 sm:p-8 md:p-12 lg:flex-row lg:gap-12 lg:p-16" />
         </div>
 
         <div className="mb-8 flex flex-col gap-y-2">
-          <div className="h-8 w-[240px] animate-pulse rounded bg-white/10"></div>
+          <div className="h-8 w-60 animate-pulse rounded bg-white/10"></div>
           <div className="h-6 w-[180px] animate-pulse rounded bg-white/10"></div>
           <div className="h-6 w-[180px] animate-pulse rounded bg-white/10"></div>
           <div className="h-6 w-[180px] animate-pulse rounded bg-white/10"></div>

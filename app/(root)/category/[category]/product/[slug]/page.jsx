@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import { plantCare } from "@/lib/data";
 import Image from "next/image";
 import ColorSelector from "@/components/ui/potColor";
@@ -12,13 +13,13 @@ import { UseProduct } from "@/hooks/useProduct";
 import ProductLoading from "@/app/(root)/productLoading";
 
 export default function PlantDetail({ params }) {
-  const { category, slug } = params;
+  const { category, slug } = use(params);
   const { data: product, isLoading } = UseProduct(slug);
 
   if (!product && !isLoading) return notFound();
 
   return (
-    <section className="container mx-auto mb-24 mt-24 max-w-[1280px] px-8 max-[350px]:px-5 md:mt-20 md:px-16 lg:mt-32">
+    <section className="container mx-auto mt-24 mb-24 max-w-7xl px-8 max-[350px]:px-5 md:mt-20 md:px-16 lg:mt-32">
       {isLoading ? (
         <ProductLoading />
       ) : (
@@ -41,7 +42,7 @@ export default function PlantDetail({ params }) {
             </ol>
           </nav>
           <div className="flex flex-col gap-y-10 md:gap-y-14 lg:gap-y-16 xl:gap-y-20">
-            <div className="w-full rounded-3xl bg-button/10 p-6 max-[380px]:px-4 sm:p-8 md:px-14 lg:rounded-[2.5rem] lg:px-8 lg:pb-16 xl:px-16">
+            <div className="bg-button/10 w-full rounded-3xl p-6 max-[380px]:px-4 sm:p-8 md:px-14 lg:rounded-[2.5rem] lg:px-8 lg:pb-16 xl:px-16">
               <div className="flex flex-col lg:flex-row lg:gap-x-8">
                 <div className="flex items-center justify-center lg:w-[45%]">
                   <Image
@@ -55,10 +56,10 @@ export default function PlantDetail({ params }) {
                 </div>
                 <div className="flex flex-col gap-y-4 md:gap-y-6 lg:w-[55%] lg:gap-y-8">
                   <div className="space-y-2 lg:space-y-6">
-                    <h1 className="w-fit rounded-full bg-accent/20 px-4 py-1 font-morangaBlack uppercase text-accent">
+                    <h1 className="bg-accent/20 font-moranga-black text-accent w-fit rounded-full px-4 py-1 uppercase">
                       {product.tag[2]}
                     </h1>
-                    <h2 className="font-morangaBlack text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
+                    <h2 className="font-moranga-black text-2xl font-bold md:text-[1.6rem] lg:text-[2.488rem] xl:text-[2.986rem]">
                       {product.name}
                     </h2>
                     <p className="text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
@@ -80,8 +81,8 @@ export default function PlantDetail({ params }) {
                         ${product.price}
                       </span>
                     )}
-                    <hr className="h-[1px] w-full grow rounded-md border-0 bg-white/60" />
-                    <span className="whitespace-nowrap text-sm opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
+                    <hr className="h-px w-full grow rounded-md border-0 bg-white/65" />
+                    <span className="text-sm whitespace-nowrap opacity-60 sm:text-base md:text-base lg:text-lg xl:text-xl">
                       {product.quantity} in stock
                     </span>
                   </div>
@@ -151,9 +152,9 @@ export default function PlantDetail({ params }) {
             </div>
 
             <div className="space-y-8">
-              <div className="space-y-8 lg:flex lg:flex-row-reverse lg:justify-between lg:gap-x-4 lg:space-y-0">
+              <div className="space-y-8 lg:flex lg:flex-row-reverse lg:justify-between lg:space-y-0 lg:gap-x-4">
                 <Rating rate={product.rate} review={product.reviews} />
-                <div className="space-y-4 lg:max-w-[40rem]">
+                <div className="space-y-4 lg:max-w-160">
                   <h1 className="text-lg font-bold sm:text-[1.266rem] md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
                     Reviews
                   </h1>
@@ -265,7 +266,7 @@ export default function PlantDetail({ params }) {
                   </div>
                 </div>
               </div>
-              <button className="rounded-full border-2 border-button px-3 py-1 text-sm font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base">
+              <button className="border-button hover:border-hover hover:bg-hover rounded-full border-2 px-3 py-1 text-sm font-bold text-white/87 md:py-2 md:text-base">
                 See all
               </button>
             </div>

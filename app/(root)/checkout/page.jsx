@@ -297,7 +297,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="container mx-auto max-w-[1280px] px-8 pb-16 pt-20 md:px-16 md:pb-[5rem] md:pt-[7rem] lg:pb-[7rem] lg:pt-[11rem]">
+    <div className="container mx-auto max-w-7xl px-8 pt-20 pb-16 md:px-16 md:pt-28 md:pb-20 lg:pt-44 lg:pb-28">
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-start">
           <div className="flex w-full flex-col gap-y-16 sm:px-12 md:px-16 lg:w-[60%] lg:px-0">
@@ -306,7 +306,7 @@ export default function Checkout() {
                 Delivery Information
               </h1>
 
-              <div className="grid grid-cols-1 gap-4 rounded-lg bg-button/10 p-8 md:grid-cols-2">
+              <div className="bg-button/10 grid grid-cols-1 gap-4 rounded-lg p-8 md:grid-cols-2">
                 <div className="flex flex-col gap-y-1 md:col-span-2">
                   <label
                     className="text-sm md:text-base lg:text-lg xl:text-xl"
@@ -316,7 +316,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("fullName")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="fullName"
                     name="fullName"
@@ -336,7 +336,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("email")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="email"
                     name="email"
@@ -356,7 +356,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("phone")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="phone"
                     name="phone"
@@ -376,7 +376,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("country")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="country"
                     list="countries"
@@ -390,7 +390,7 @@ export default function Checkout() {
                         key={country.iso2}
                         value={country.name}
                         data-iso2={country.iso2}
-                        className="text-sm focus:bg-accent/10 focus:text-white/100 md:text-base lg:text-lg xl:text-xl"
+                        className="focus:bg-accent/10 text-sm focus:text-white md:text-base lg:text-lg xl:text-xl"
                       />
                     ))}
                   </datalist>
@@ -410,7 +410,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("state")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="state"
                     list="states"
@@ -443,7 +443,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("city")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="city"
                     list="cities"
@@ -474,7 +474,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("zipCode")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="zipCode"
                     name="zipCode"
@@ -494,7 +494,7 @@ export default function Checkout() {
                   </label>
                   <input
                     {...register("street")}
-                    className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                    className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                     type="text"
                     id="street"
                     name="street"
@@ -511,7 +511,7 @@ export default function Checkout() {
               <h1 className="text-sm font-medium md:text-base lg:text-lg xl:text-xl">
                 Payment
               </h1>
-              <div className="rounded-lg bg-button/10 p-8">
+              <div className="bg-button/10 rounded-lg p-8">
                 <div className="flex w-full flex-col gap-y-4">
                   <label className="text-sm md:text-base lg:text-lg xl:text-xl">
                     Select payment method
@@ -529,7 +529,7 @@ export default function Checkout() {
                           id="credit"
                           value="credit"
                           name="paymentMethod"
-                          className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "credit" ? "border border-button" : ""}`}
+                          className={`bg-primary focus:bg-primary border-0 ${paymentMethods === "credit" ? "border-button border" : ""}`}
                         />
                         <label
                           htmlFor="credit"
@@ -548,7 +548,7 @@ export default function Checkout() {
                           </label>
                           <input
                             {...register("cardNumber")}
-                            className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                            className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                             type="text"
                             id="card"
                           />
@@ -568,7 +568,7 @@ export default function Checkout() {
                           </label>
                           <input
                             {...register("expiryDate")}
-                            className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                            className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                             type="text"
                             id="expiryDate"
                           />
@@ -587,7 +587,7 @@ export default function Checkout() {
                           </label>
                           <input
                             {...register("cvv")}
-                            className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                            className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                             type="text"
                             id="cvv"
                           />
@@ -605,7 +605,7 @@ export default function Checkout() {
                         id="paypal"
                         value="paypal"
                         name="paymentMethod"
-                        className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "paypal" ? "border border-button" : ""}`}
+                        className={`bg-primary focus:bg-primary border-0 ${paymentMethods === "paypal" ? "border-button border" : ""}`}
                       />
                       <label
                         htmlFor="paypal"
@@ -620,7 +620,7 @@ export default function Checkout() {
                         id="cash"
                         value="cash"
                         name="paymentMethod"
-                        className={`border-0 bg-primary focus:bg-primary ${paymentMethods === "cash" ? "border border-button" : ""}`}
+                        className={`bg-primary focus:bg-primary border-0 ${paymentMethods === "cash" ? "border-button border" : ""}`}
                       />
                       <label
                         htmlFor="cash"
@@ -640,7 +640,7 @@ export default function Checkout() {
             <h1 className="text-sm font-medium md:text-base lg:text-lg xl:text-xl">
               Order Summary
             </h1>
-            <div className="rounded-lg bg-button/10 p-8">
+            <div className="bg-button/10 rounded-lg p-8">
               <div className="w-full space-y-12">
                 {cart.length > 0 ? (
                   cart.map((item) => (
@@ -690,7 +690,7 @@ export default function Checkout() {
                     </label>
                     <div className="flex gap-x-2">
                       <input
-                        className="h-[50px] w-full rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
+                        className="focus:ring-button h-[50px] w-full rounded-lg border-2 border-white/5 bg-white/2 px-4 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
                         type="text"
                         id="discount"
                         value={discountCode}
@@ -704,7 +704,7 @@ export default function Checkout() {
                           handleApplyDiscount(subtotals, discountCode);
                         }}
                         disabled={cart.length > 0 ? false : true}
-                        className="rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button md:py-2 md:text-base"
+                        className="border-button bg-button hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button rounded-md border-2 px-3 py-1 text-[0.75rem] font-bold text-white/87 md:py-2 md:text-base"
                       >
                         Apply
                       </button>
@@ -740,7 +740,7 @@ export default function Checkout() {
                     />
                     <span>-${discount}</span>
                   </div>
-                  <div className="mb-4 mt-6 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
+                  <div className="mt-6 mb-4 flex justify-between text-sm font-bold md:text-base lg:text-lg xl:text-xl">
                     <span>Total</span>
                     <span>
                       ${discountedTotal !== null ? discountedTotal : total}
@@ -748,7 +748,7 @@ export default function Checkout() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button md:py-2 md:text-base"
+                    className="border-button bg-button hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button w-full rounded-md border-2 px-3 py-1 text-[0.75rem] font-bold text-white/87 md:py-2 md:text-base"
                     disabled={cart.length > 0 ? false : true}
                   >
                     Place Order

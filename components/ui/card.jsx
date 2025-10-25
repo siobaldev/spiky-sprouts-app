@@ -8,7 +8,7 @@ import AddToCartButton from "./addToCart";
 
 const Page = ({ name, image, rate, reviews, salePrice, price, plant }) => {
   return (
-    <div className="relative flex h-[16rem] w-[9rem] flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/[0.05] bg-white/[0.02] shadow-itemCard md:h-[20rem] md:w-[13rem]">
+    <div className="shadow-item-card relative flex h-64 w-36 flex-col items-center justify-center gap-y-2 rounded-2xl border-2 border-white/5 bg-white/2 md:h-80 md:w-52">
       <Favorite />
 
       <ClientWrapper>
@@ -23,9 +23,7 @@ const Page = ({ name, image, rate, reviews, salePrice, price, plant }) => {
       </ClientWrapper>
 
       <div className="flex w-full flex-col gap-y-1 px-4">
-        <h1 className="text-sm font-bold opacity-[0.87] md:text-base">
-          {name}
-        </h1>
+        <h1 className="text-sm font-bold opacity-87 md:text-base">{name}</h1>
         <div className="flex items-center gap-x-1 text-xs font-bold md:text-sm">
           <Image
             className="size-4"

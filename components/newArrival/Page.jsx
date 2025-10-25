@@ -8,10 +8,10 @@ export default function NewArrival() {
     >
       <div className="flex flex-col items-center justify-center">
         <div className="mb-8 space-y-2 text-center">
-          <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
+          <h1 className="font-moranga-black text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
             New <span className="text-accent">Arrivals</span>
           </h1>
-          <p className="mx-auto max-w-[30rem] text-sm opacity-60 md:text-base lg:max-w-[35rem] lg:text-lg xl:text-xl">
+          <p className="mx-auto max-w-120 text-sm opacity-60 md:text-base lg:max-w-140 lg:text-lg xl:text-xl">
             Select new ornamental plants for home decoration and obtain an
             atmosphere of harmony and freshness.
           </p>

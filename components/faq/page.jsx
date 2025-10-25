@@ -14,14 +14,14 @@ export default function Faq() {
       id="faq"
       className="mb-28 scroll-mt-20 px-6 sm:px-10 md:scroll-mt-28 md:px-14"
     >
-      <h1 className="mb-8 text-center font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
+      <h1 className="font-moranga-black mb-8 text-center text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
         FAQ<span className="lowercase">s</span>
       </h1>
       <div className="mx-auto max-w-[800px] space-y-2 text-sm md:space-y-3 md:text-base lg:space-y-4 lg:text-lg xl:text-xl">
         {FAQs.map((faqs) => (
           <div
             key={faqs.id}
-            className={`rounded-2xl border-white bg-white/[0.02] p-4 md:p-5 lg:p-6 ${openAccordionId === faqs.id ? "bg-white/[0.05] duration-300" : "transition-colors"}`}
+            className={`rounded-2xl border-white bg-white/2 p-4 md:p-5 lg:p-6 ${openAccordionId === faqs.id ? "bg-white/5 duration-300" : "transition-colors"}`}
           >
             <button
               onClick={() => toggleAccordion(faqs.id)}
@@ -30,11 +30,11 @@ export default function Faq() {
               <span className="pr-4 text-left opacity-87">{faqs.question}</span>
               <span
                 className={`transition-transform duration-300 ease-in-out ${
-                  openAccordionId === faqs.id ? "rotate-180" : "-rotate-0"
+                  openAccordionId === faqs.id ? "rotate-180" : "rotate-0"
                 }`}
               >
                 <svg
-                  className="size-[10px] md:size-[12px]"
+                  className="size-2.5 md:size-3"
                   width="10"
                   height="10"
                   viewBox="0 0 15 15"

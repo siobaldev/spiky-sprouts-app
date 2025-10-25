@@ -14,7 +14,7 @@ export default function AddToCartButton({ plant, className }) {
   return (
     <button
       className={cn(
-        "rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover md:py-2 md:text-base",
+        "border-button bg-button hover:border-hover hover:bg-hover rounded-md border-2 px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] md:py-2 md:text-base",
         className,
       )}
       onClick={handleClick}

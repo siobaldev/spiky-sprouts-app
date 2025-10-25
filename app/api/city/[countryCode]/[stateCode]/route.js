@@ -1,5 +1,5 @@
 export async function GET(request, { params }) {
-  const { countryCode, stateCode } = params;
+  const { countryCode, stateCode } = await params;
 
   if (!countryCode && !stateCode) {
     return Response.json(

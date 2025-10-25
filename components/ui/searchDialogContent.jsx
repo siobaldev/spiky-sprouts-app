@@ -65,13 +65,13 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
   return (
     <DialogContent
       onKeyDown={handleKeyDown}
-      className="border-0 bg-primary shadow-lg"
+      className="bg-primary border-0 shadow-lg"
     >
       <DialogHeader>
         <DialogTitle className="text-left">Search Plant</DialogTitle>
       </DialogHeader>
       <form onSubmit={handleSubmit}>
-        <div className="flex w-full items-center border-b border-accent/20 md:px-3">
+        <div className="border-accent/20 flex w-full items-center border-b md:px-3">
           <Search className="text-white/60" />
           <input
             type="text"
@@ -87,7 +87,7 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="text-sm hover:text-white/100"
+              className="text-sm hover:text-white"
             >
               Clear
             </button>

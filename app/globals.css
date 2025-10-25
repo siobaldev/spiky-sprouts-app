@@ -1,14 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
 
-::selection {
-  @apply bg-selection; /* Change the colors as needed */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: hsl(80, 40%, 6%);
+  --color-accent: hsl(93, 54%, 54%);
+  --color-button: hsl(25, 98%, 32%);
+  --color-hover: hsl(15, 98%, 32%);
+  --color-selection: hsl(71, 35%, 26%);
+
+  --color-potColor-bronze: hsl(33, 50%, 45%);
+  --color-potColor-brown: hsl(28, 19%, 43%);
+  --color-potColor-green: hsl(93, 33%, 28%);
+  --color-potColor-space: hsl(170, 12%, 20%);
+
+  --font-geist: var(--font-geist);
+  --font-moranga-regular: var(--font-moranga-regular);
+  --font-moranga-black: var(--font-moranga-black);
+
+  --opacity-38: 0.38;
+  --opacity-60: 0.6;
+  --opacity-87: 0.87;
+
+  --drop-shadow-sm: 0 0 10px rgba(222, 168, 65, 0.4);
+  --drop-shadow-md: 0 0 17.5px rgba(222, 168, 65, 0.4);
+  --drop-shadow-lg: 0 0 25px rgba(222, 168, 65, 0.4);
+
+  --hadow-item-card: 0 0 25px rgba(0, 0, 0, 0.25);
+  --shadow-header-bottom: 0px 0px 10px 10px rgb(17, 21, 9);
+  --shadow-nav-shadow: 20px 0px 30px -15px hsl(80, 40%, 6%);
+
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer utilities {
+  .dark {
+    color-scheme: dark;
+  }
 }
 
 @layer base {
-  :root {
-
-    --radius: 0.5rem
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

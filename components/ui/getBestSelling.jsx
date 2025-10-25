@@ -30,7 +30,7 @@ export const GetBestSelling = () => {
   }
 
   return (
-    <div className="flex w-full max-w-[46rem] flex-wrap items-center justify-center gap-x-4 gap-y-4">
+    <div className="flex w-full max-w-184 flex-wrap items-center justify-center gap-x-4 gap-y-4">
       {bestSelling.map((product) => (
         <Link href={`/category/All/product/${product.slug}`} key={product.id}>
           <Card
