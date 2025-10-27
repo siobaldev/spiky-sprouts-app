@@ -26,7 +26,7 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
   }
 
   useEffect(() => {
-    if (products) {
+    if (Array.isArray(products)) {
       setDisplayProducts(products);
     }
   }, [products]);
@@ -117,17 +117,18 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
 
         {searchQuery && products?.length > 0 ? (
           <div className="space-y-1">
-            {displayProducts.map((product, index) => (
-              <button
-                key={product.id}
-                onClick={() => handleSelect(product)}
-                className={`flex w-full items-center rounded-lg px-3 py-2 text-sm transition-colors ${index === activeIndex ? "bg-accent/10" : "hover:bg-accent/10"}`}
-              >
-                <div>
-                  <p className="font-medium">{product.name}</p>
-                </div>
-              </button>
-            ))}
+            {Array.isArray(displayProducts) &&
+              displayProducts.map((product, index) => (
+                <button
+                  key={product.id}
+                  onClick={() => handleSelect(product)}
+                  className={`flex w-full items-center rounded-lg px-3 py-2 text-sm transition-colors ${index === activeIndex ? "bg-accent/10" : "hover:bg-accent/10"}`}
+                >
+                  <div>
+                    <p className="font-medium">{product.name}</p>
+                  </div>
+                </button>
+              ))}
           </div>
         ) : (
           !isFetching &&
