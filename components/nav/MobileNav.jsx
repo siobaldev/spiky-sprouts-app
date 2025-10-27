@@ -54,7 +54,7 @@ export default function MobileNav() {
             initial="initial"
             animate="enter"
             exit="exit"
-            className="bg-primary shadow-nav-shadow fixed top-0 left-0 mb-10 flex h-dvh flex-col p-6 max-[380px]:p-2 sm:w-96 md:w-md md:p-16"
+            className="fixed left-0 top-0 mb-10 flex h-dvh flex-col bg-primary p-6 shadow-navShadow max-[380px]:p-2 sm:w-96 md:w-[28rem] md:p-16"
           >
             <div className="flex h-screen flex-col justify-between space-y-12 px-6 py-24 md:px-0">
               <div className="space-y-14">
@@ -68,7 +68,7 @@ export default function MobileNav() {
                     {NavItems.map((link) => (
                       <li
                         key={link.href}
-                        className="hover:text-accent list-none transition"
+                        className="list-none transition hover:text-accent"
                       >
                         <Link onClick={toggleMenu} href={link.href}>
                           {link.title}
@@ -80,13 +80,13 @@ export default function MobileNav() {
               </div>
 
               <div className="mt-12 flex items-center justify-center gap-x-4">
-                <div className="bg-button flex size-10 cursor-pointer items-center justify-center rounded-full">
+                <div className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-button">
                   <FacebookIcon />
                 </div>
-                <div className="bg-button flex size-10 cursor-pointer items-center justify-center rounded-full">
+                <div className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-button">
                   <TwitterIcon />
                 </div>
-                <div className="bg-button flex size-10 cursor-pointer items-center justify-center rounded-full">
+                <div className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-button">
                   <InstagramIcon />
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function MobileNav() {
 
         {isOpen && (
           <motion.div
-            className="bg-primary/40 fixed top-0 left-0 -z-10 h-screen w-full backdrop-blur-sm lg:hidden"
+            className="fixed left-0 top-0 -z-10 h-screen w-full bg-primary/40 backdrop-blur-sm lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

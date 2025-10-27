@@ -5,10 +5,8 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request, { params }) {
   try {
-    const { slug } = await params;
-
     const product = await prisma.product.findUnique({
-      where: { slug },
+      where: { slug: params.slug },
     });
 
     if (!product) {

@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Rating({ rate, review }) {
   return (
     <>
-      <div className="bg-button/10 h-fit max-w-md space-y-2 rounded-3xl p-6 max-[380px]:px-4 lg:w-md">
+      <div className="h-fit max-w-[28rem] space-y-2 rounded-3xl bg-button/10 p-6 max-[380px]:px-4 lg:w-[28rem]">
         <div className="space-y-4">
           <h1 className="text-lg font-bold sm:text-[1.266rem] md:text-[1.424rem] lg:text-[1.602rem]">
             Rating
@@ -45,10 +45,10 @@ export default function Rating({ rate, review }) {
               />
               <div className="relative flex items-center">
                 <div
-                  className="bg-button absolute h-1.5 w-full items-start rounded-full"
+                  className="absolute h-[6px] w-full items-start rounded-full bg-button"
                   style={{ width: `${(rate.number / 25) * 100}%` }}
                 />
-                <div className="bg-button/10 absolute h-1.5 w-full items-start rounded-full" />
+                <div className="absolute h-[6px] w-full items-start rounded-full bg-button/10" />
               </div>
 
               <div className="ml-4 text-sm md:text-base lg:text-lg xl:text-xl">

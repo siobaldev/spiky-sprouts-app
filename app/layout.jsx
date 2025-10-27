@@ -29,9 +29,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} bg-primary font-geist min-w-80 bg-[url(/assets/NoiceTexture.png)] text-white/87 bg-blend-overlay`}
+        className={`${geistSans.variable} ${morangaBlack.variable} ${morangaRegular.variable} min-w-80 bg-primary bg-noise font-sans text-white/87 bg-blend-overlay`}
       >
         {children}
       </body>

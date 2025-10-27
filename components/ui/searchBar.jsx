@@ -21,7 +21,7 @@ export default function SearchBar() {
           <button
             onMouseEnter={prefetchDialog}
             onFocus={prefetchDialog}
-            className="flex h-12 flex-row items-center justify-between rounded-lg border-2 border-white/5 bg-white/2 py-2 font-medium text-white/60 placeholder:opacity-60 sm:w-60 md:w-72 lg:w-72"
+            className="flex h-12 flex-row items-center justify-between rounded-lg border-2 border-white/[0.05] bg-white/[0.02] py-2 font-medium text-white/60 placeholder:opacity-60 sm:w-60 md:w-72 lg:w-72"
           >
             <div className="flex flex-row items-center gap-x-2 px-2 lg:px-4">
               <Search className="size-5 transform text-white/60 max-[380px]:size-4 lg:size-6" />

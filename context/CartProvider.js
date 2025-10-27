@@ -6,7 +6,7 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
-  const [confirmedOrders, setConfirmedOrders] = useState(null);
+  const [setConfirmedOrders] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function CartProvider({ children }) {
     });
   };
 
-  const confirmOrder = () => {
+  const confirmedOrders = () => {
     setConfirmedOrders([...cart]);
     setCart([]);
   };
@@ -104,7 +104,6 @@ export function CartProvider({ children }) {
         getOrderTotal,
         isLoaded,
         confirmedOrders,
-        confirmOrder,
       }}
     >
       {children}

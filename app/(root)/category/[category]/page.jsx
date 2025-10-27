@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Card from "@/components/ui/card";
@@ -8,7 +8,7 @@ import { UseProducts } from "@/hooks/useProducts";
 import Loading from "@/components/ui/loading";
 
 export default function ShopByCategory({ params }) {
-  const { category } = use(params);
+  const { category } = params;
   const validCategories = ["All", "Cactus", "Succulent"];
   const { data: allProducts, isLoading, error } = UseProducts(category);
 
@@ -48,9 +48,9 @@ export default function ShopByCategory({ params }) {
               onClick={() => {
                 setSelectedCategory(cat);
               }}
-              className={`bg-button/10 hover:ring-button rounded-lg px-5 py-2 hover:ring-2 ${
+              className={`rounded-lg bg-button/10 px-5 py-2 hover:ring-2 hover:ring-button ${
                 selectedCategory === cat
-                  ? "ring-button ring-2"
+                  ? "ring-2 ring-button"
                   : "text-white/60"
               }`}
             >
@@ -95,7 +95,7 @@ export default function ShopByCategory({ params }) {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="bg-button/10 hover:ring-button rounded-lg px-5 py-2 hover:ring-2 disabled:text-white/30 disabled:ring-0"
+            className="rounded-lg bg-button/10 px-5 py-2 hover:ring-2 hover:ring-button disabled:text-white/30 disabled:ring-0"
           >
             Previous
           </button>
@@ -104,7 +104,7 @@ export default function ShopByCategory({ params }) {
               key={page}
               onClick={() => setCurrentPage(page)}
               className={`rounded-lg px-4 py-2 ${
-                currentPage === page ? "bg-button/10 border-0" : ""
+                currentPage === page ? "border-0 bg-button/10" : ""
               }`}
             >
               {page}
@@ -115,7 +115,7 @@ export default function ShopByCategory({ params }) {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className="bg-button/10 hover:ring-button rounded-lg px-5 py-2 hover:ring-2 disabled:text-white/30 disabled:ring-0"
+            className="rounded-lg bg-button/10 px-5 py-2 hover:ring-2 hover:ring-button disabled:text-white/30 disabled:ring-0"
           >
             Next
           </button>

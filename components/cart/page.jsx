@@ -58,20 +58,20 @@ export default function Cart() {
           />
 
           {cart.length > 0 && (
-            <span className="bg-button before:bg-button/80 absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white before:absolute before:-z-10 before:size-6 before:animate-ping before:rounded-full">
+            <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-button text-sm text-white before:absolute before:-z-10 before:size-6 before:animate-ping before:rounded-full before:bg-button/80">
               {cartTotal}
             </span>
           )}
         </button>
       </SheetTrigger>
-      <SheetContent className="border-accent/20 dark:bg-primary flex flex-col justify-between gap-y-4 overflow-y-auto border-l p-6">
+      <SheetContent className="flex flex-col justify-between gap-y-4 overflow-y-auto border-l border-accent/20 bg-primary p-6">
         <SheetHeader>
           <SheetTitle className="text-white">Shopping Cart</SheetTitle>
         </SheetHeader>
         <div className="w-full">
           <div className="flex h-full flex-col">
             {cart.length === 0 ? (
-              <p className="font-moranga-regular text-center text-[4rem]">
+              <p className="text-center font-morangaRegular text-[4rem]">
                 Your cart is empty
               </p>
             ) : (
@@ -110,7 +110,7 @@ export default function Cart() {
                               onClick={() =>
                                 updateQuantity(plant.id, plant.quantity - 1)
                               }
-                              className="bg-button/10 rounded-md px-2 py-2"
+                              className="rounded-md bg-button/10 px-2 py-2"
                             >
                               <Minus className="h-4 w-4" />
                             </button>
@@ -119,7 +119,7 @@ export default function Cart() {
                               onClick={() =>
                                 updateQuantity(plant.id, plant.quantity + 1)
                               }
-                              className="bg-button/10 rounded-md px-2 py-2"
+                              className="rounded-md bg-button/10 px-2 py-2"
                             >
                               <Plus className="h-4 w-4" />
                             </button>
@@ -137,13 +137,13 @@ export default function Cart() {
           </div>
         </div>
         <SheetFooter>
-          <div className="border-accent/20 mt-4 mb-8 w-full border-t">
+          <div className="mb-8 mt-4 w-full border-t border-accent/20">
             <div className="flex items-center justify-between text-lg font-semibold">
               <span>Total</span>
               <span className="text-3xl">${getCartTotal().toFixed(2)}</span>
             </div>
             <button
-              className="border-button bg-button hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button mt-4 w-full rounded-md border-2 px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] md:py-2 md:text-base"
+              className="mt-4 w-full rounded-md border-2 border-button bg-button px-3 py-1 text-[0.75rem] font-bold text-white/[0.87] hover:border-hover hover:bg-hover disabled:hover:border-button disabled:hover:bg-button md:py-2 md:text-base"
               onClick={handleCheckout}
               disabled={cart.length > 0 ? false : true}
             >

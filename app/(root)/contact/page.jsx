@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <section className="container mx-auto max-w-7xl px-8 pt-20 pb-16 md:px-16 md:pt-28 md:pb-20 lg:pt-44 lg:pb-28">
+    <section className="container mx-auto max-w-[1280px] px-8 pb-16 pt-20 md:px-16 md:pb-[5rem] md:pt-[7rem] lg:pb-[7rem] lg:pt-[11rem]">
       <div className="flex flex-col-reverse justify-center gap-y-10 lg:flex-row-reverse lg:gap-x-16">
         <div className="flex flex-col gap-y-8 p-6 sm:p-8 md:p-10 lg:w-[40%]">
           <div className="flex gap-x-4">
@@ -18,7 +18,7 @@ export default function Contact() {
             </svg>
             <div className="space-y-2">
               <div>
-                <h1 className="font-moranga-black text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
+                <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
                   Message us
                 </h1>
                 <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
@@ -49,7 +49,7 @@ export default function Contact() {
             </svg>
             <div className="space-y-2">
               <div>
-                <h1 className="font-moranga-black text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
+                <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
                   Visit us
                 </h1>
                 <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
@@ -80,7 +80,7 @@ export default function Contact() {
 
             <div className="space-y-2">
               <div>
-                <h1 className="font-moranga-black text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
+                <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug">
                   Call us
                 </h1>
                 <p className="text-sm opacity-60 md:text-base lg:text-lg xl:text-xl">
@@ -94,9 +94,9 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-button/10 space-y-8 rounded-3xl p-6 sm:p-8 md:p-10 lg:w-[60%]">
+        <div className="space-y-8 rounded-3xl bg-button/10 p-6 sm:p-8 md:p-10 lg:w-[60%]">
           <div className="flex flex-col gap-y-2">
-            <h1 className="font-moranga-black text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
+            <h1 className="font-morangaBlack text-xl uppercase opacity-87 md:text-[1.6rem] md:leading-snug lg:text-[2.488rem] xl:text-[2.986rem]">
               We&apos;re Here to Help
             </h1>
             {/* md:w-[34rem] lg:w-[38rem] xl:w-[40rem] */}
@@ -111,7 +111,7 @@ export default function Contact() {
             <div className="flex flex-auto flex-col gap-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <input
-                  className="focus:ring-button block flex-1 rounded-lg border-2 border-white/5 bg-white/2 px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
+                  className="block flex-1 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                   type="text"
                   id="search"
                   name="search"
@@ -120,7 +120,7 @@ export default function Contact() {
                   required
                 />
                 <input
-                  className="focus:ring-button block flex-1 rounded-lg border-2 border-white/5 bg-white/2 px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
+                  className="block flex-1 rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                   type="text"
                   id="search"
                   name="search"
@@ -133,7 +133,7 @@ export default function Contact() {
 
               <textarea
                 rows="5"
-                className="focus:ring-button block resize-none rounded-lg border-2 border-white/5 bg-white/2 px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:ring-2 focus:outline-none md:text-base lg:text-lg xl:text-xl"
+                className="block resize-none rounded-lg border-2 border-white/[0.05] bg-white/[0.02] px-4 py-2.5 text-sm font-medium placeholder-white/[.38] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-button md:text-base lg:text-lg xl:text-xl"
                 type="text"
                 id="search"
                 name="search"
@@ -144,7 +144,7 @@ export default function Contact() {
             </div>
           </form>
 
-          <button className="bg-button hover:bg-hover rounded-md px-4 py-2.5 text-sm font-bold md:text-base lg:text-lg xl:px-8 xl:text-xl">
+          <button className="font-basementGrotesque rounded-md bg-button px-4 py-2.5 text-sm font-bold hover:bg-hover md:text-base lg:text-lg xl:px-8 xl:text-xl">
             Submit
           </button>
         </div>
