@@ -1,47 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { plants } from "@/lib/data";
 import {
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Search } from "lucide-react";
-import { useDebouncedProductSearch } from "@/hooks/useSearchProducts";
 
 export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
-  const {
-    data: products,
-    isLoading,
-    isFetching,
-    error,
-  } = useDebouncedProductSearch(searchQuery);
-  const [displayProducts, setDisplayProducts] = useState([]);
 
   let isMobile = false;
   if (typeof window !== "undefined") {
     isMobile = window.matchMedia("(max-width: 1024px)").matches;
   }
 
-  useEffect(() => {
-    if (Array.isArray(products)) {
-      setDisplayProducts(products);
-    }
-  }, [products]);
+  const searchPlants = query
+    ? plants
+        .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
+        .slice(0, 5)
+    : [];
 
   useEffect(() => {
-    if (searchQuery === "") {
-      setDisplayProducts([]);
-    }
     setActiveIndex(0);
-  }, [searchQuery]);
+  }, [query]);
 
-  const handleSelect = (product) => {
-    router.push(`/category/All/product/${product.slug}`);
+  const handleSelect = (plant) => {
+    router.push(`/category/All/product/${plant.slug}`);
     setOpen(false);
-    setSearchQuery("");
+    setQuery("");
     {
       isMobile ? setMobileNavOpen(false) : "";
     }
@@ -49,26 +39,26 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchQuery.trim() && products && products.length > 0) {
-      handleSelect(products[0]);
+    if (query.trim() && searchPlants.length > 0) {
+      handleSelect(searchPlants[0]);
     }
   };
 
   const handleKeyDown = (e) => {
-    if (!displayProducts?.length) return;
+    if (!searchPlants.length) return;
 
     if (e.key === "ArrowUp" || e.key === "ArrowDown") {
       e.preventDefault();
 
       if (e.key === "ArrowDown") {
         setActiveIndex((index) =>
-          index < displayProducts?.length - 1 ? index + 1 : index,
+          index < searchPlants.length - 1 ? index + 1 : index,
         );
       } else {
         setActiveIndex((index) => (index > 0 ? index - 1 : index));
       }
     } else if (e.key === "Enter") {
-      handleSelect(displayProducts[activeIndex]);
+      handleSelect(searchPlants[activeIndex]);
     }
   };
 
@@ -86,17 +76,17 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
           <input
             type="text"
             id="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             name="search"
             autoComplete="off"
             placeholder="Search plants..."
             className="w-full bg-transparent px-3 py-3 outline-none placeholder:text-white/60"
           />
-          {searchQuery && (
+          {query && (
             <button
               type="button"
-              onClick={() => setSearchQuery("")}
+              onClick={() => setQuery("")}
               className="text-sm hover:text-white"
             >
               Clear
@@ -104,35 +94,23 @@ export default function SearchDialogContent({ setOpen, setMobileNavOpen }) {
           )}
         </div>
       </form>
-
       <div className="mt-2">
-        {isLoading && (
-          <p className="py-6 text-center text-sm text-white/60">Searching...</p>
-        )}
-        {error && (
-          <p className="py-6 text-center text-sm text-red-400">
-            Error loading results. Please try again.
-          </p>
-        )}
-
-        {searchQuery && products?.length > 0 ? (
+        {query && searchPlants.length > 0 ? (
           <div className="space-y-1">
-            {Array.isArray(displayProducts) &&
-              displayProducts.map((product, index) => (
-                <button
-                  key={product.id}
-                  onClick={() => handleSelect(product)}
-                  className={`flex w-full items-center rounded-lg px-3 py-2 text-sm transition-colors ${index === activeIndex ? "bg-accent/10" : "hover:bg-accent/10"}`}
-                >
-                  <div>
-                    <p className="font-medium">{product.name}</p>
-                  </div>
-                </button>
-              ))}
+            {searchPlants.map((plant, index) => (
+              <button
+                key={plant.id}
+                onClick={() => handleSelect(plant)}
+                className={`flex w-full items-center rounded-lg px-3 py-2 text-sm transition-colors ${index === activeIndex ? "bg-accent/10" : "hover:bg-accent/10"}`}
+              >
+                <div>
+                  <p className="font-medium">{plant.name}</p>
+                </div>
+              </button>
+            ))}
           </div>
         ) : (
-          !isFetching &&
-          products?.length === 0 && (
+          query && (
             <p className="py-6 text-center text-sm text-white/38 lg:text-base">
               No plants found
             </p>
