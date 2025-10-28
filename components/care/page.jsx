@@ -18,7 +18,7 @@ export default function Care() {
         <div className="flex flex-col items-center justify-center gap-x-8 md:flex-row lg:flex-row">
           <Image
             className="drop-shadow-sm md:w-64 md:drop-shadow-md lg:w-96 lg:drop-shadow-lg"
-            src="/assets/Care-Cactus.webp"
+            src="https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Care-Cactus.webp"
             alt="home-cactus"
             width={150}
             height={150}

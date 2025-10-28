@@ -11,7 +11,7 @@ export default function Testimonial() {
         <div className="md:order-1">
           <Image
             className="lg:drop-shadow-lgv min-w-44 drop-shadow-sm max-[420px]:min-w-32 sm:w-[14rem] md:w-[15rem]"
-            src="/assets/Contact-Cactus.webp"
+            src="https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Contact-Cactus.webp"
             alt="home-cactus"
             width={100}
             height={100}

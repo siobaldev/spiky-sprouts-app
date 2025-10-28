@@ -34,7 +34,9 @@ export default function Hero() {
         <div>
           <Image
             className="w-48 drop-shadow-sm sm:w-[14rem] md:w-[20rem] lg:drop-shadow-lg xl:w-[22rem]"
-            src="/assets/Home-Cactus.webp"
+            src={
+              "https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Home-Cactus.webp"
+            }
             alt="home-cactus"
             width={300}
             height={300}

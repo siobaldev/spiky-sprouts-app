@@ -4,6 +4,7 @@ import Card from "@/components/ui/card";
 import Link from "next/link";
 import { UseProducts } from "@/hooks/useProducts";
 import Loading from "./loading";
+import { toast } from "sonner";
 
 export const GetNewArrivals = () => {
   const { data: newProducts, isLoading, error } = UseProducts("New");

@@ -26,16 +26,20 @@ export default function Category() {
             <div className="relative size-52 bg-[url('/assets/all-bg.svg')] bg-cover md:size-64 lg:size-80">
               <Image
                 className="absolute left-8 top-8 size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:size-40 lg:drop-shadow-lg"
-                src={"/assets/Lily-Pad-Succulent.webp"}
-                alt="Wishlist"
+                src={
+                  "https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Lily-Pad-Succulent.webp"
+                }
+                alt="lily-pad-succulent-image"
                 width={20}
                 height={20}
                 unoptimized={true}
               />
               <Image
                 className="absolute bottom-8 right-8 size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:size-40 lg:drop-shadow-lg"
-                src={"/assets/Gymnocalycium-Cactus.webp"}
-                alt="Wishlist"
+                src={
+                  "https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Gymnocalycium-Cactus.webp"
+                }
+                alt="gymnocalycium-cactus-image"
                 width={20}
                 height={20}
                 unoptimized={true}
@@ -56,8 +60,10 @@ export default function Category() {
               <div className="flex size-40 items-center justify-center bg-[url('/assets/cactus-bg.svg')] bg-cover md:size-52 lg:size-60">
                 <Image
                   className="size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:drop-shadow-lg"
-                  src={"/assets/Rebutia-Cactus.webp"}
-                  alt="Wishlist"
+                  src={
+                    "https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Rebutia-Cactus.webp"
+                  }
+                  alt="rebutia-cactus-image"
                   width={20}
                   height={20}
                   unoptimized={true}
@@ -76,8 +82,10 @@ export default function Category() {
               <div className="flex size-40 items-center justify-center bg-[url('/assets/succulent-bg.svg')] bg-cover md:size-52 lg:size-60">
                 <Image
                   className="size-24 select-none drop-shadow-sm md:size-32 md:drop-shadow-md lg:drop-shadow-lg"
-                  src={"/assets/Jade-Plant-Succulent.webp"}
-                  alt="Wishlist"
+                  src={
+                    "https://nlyzxhvvdrgeqcrgakld.supabase.co/storage/v1/object/public/images/Jade-Plant-Succulent.webp"
+                  }
+                  alt="jade-plant-succulent-image"
                   width={20}
                   height={20}
                   unoptimized={true}
